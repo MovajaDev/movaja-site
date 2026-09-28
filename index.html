@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOVAJÁ — Sua viagem. Seus pontos.</title>
+<meta name="description" content="Protótipo funcional da MOVAJÁ para testar contas, busca de hotéis e redirecionamento de afiliados.">
+<style>
+:root{--green:#1f7a4d;--green2:#2d9a62;--ink:#17231d;--muted:#66736c;--bg:#f6f8f6;--card:#fff;--line:#dfe7e2;--danger:#b42318}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input{font:inherit}.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:18px}.logo{font-weight:900;font-size:27px;letter-spacing:-1.5px;color:var(--green);cursor:pointer}.tag{font-size:12px;color:var(--muted);display:none}.navspacer{flex:1}.nav button,.pill{border:0;background:transparent;padding:10px 13px;border-radius:10px;cursor:pointer}.nav button:hover{background:#eef5f0}.primary{background:var(--green)!important;color:#fff!important;font-weight:700}.hero{background:linear-gradient(135deg,#e7f4eb,#f7fbf8);padding:58px 20px 46px}.hero-inner{max-width:1180px;margin:auto}.hero h1{font-size:clamp(34px,6vw,58px);line-height:.98;margin:0 0 14px;max-width:700px;letter-spacing:-2px}.hero p{color:var(--muted);font-size:18px;max-width:650px}.search{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:10px;display:flex;gap:8px;box-shadow:0 10px 35px #163d2812;max-width:900px}.search input{flex:1;border:0;outline:0;padding:13px 14px;min-width:0}.search button{border:0;border-radius:12px;padding:13px 20px;background:var(--green);color:#fff;font-weight:800;cursor:pointer}.wrap{max-width:1180px;margin:auto;padding:34px 20px}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}.sectionhead h2{margin:0;font-size:28px}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.hotel{background:var(--card);border:1px solid var(--line);border-radius:17px;overflow:hidden;box-shadow:0 5px 20px #183a2510}.hotel img{width:100%;height:215px;object-fit:cover;display:block}.hotel-body{padding:15px}.row{display:flex;justify-content:space-between;gap:10px}.hotel h3{margin:0 0 5px;font-size:19px}.rating{font-weight:800}.location{color:var(--muted);font-size:14px;margin-bottom:12px}.price{font-size:20px;font-weight:900}.price small{font-size:12px;font-weight:500;color:var(--muted)}.actions{display:flex;gap:8px;margin-top:14px}.actions button{flex:1;border:1px solid var(--line);background:#fff;padding:11px;border-radius:10px;cursor:pointer;font-weight:700}.actions .book{background:var(--green);color:#fff;border-color:var(--green)}.notice{background:#fff7e6;border:1px solid #f1d89b;color:#654b16;padding:13px 15px;border-radius:12px;font-size:13px;margin:20px 0}.how{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}.step b{display:block;margin-bottom:6px}.footer{margin-top:30px;background:#132019;color:#dce9e1;padding:34px 20px}.footer-inner{max-width:1180px;margin:auto}.modalbg{position:fixed;inset:0;background:#08120dcc;display:none;align-items:center;justify-content:center;padding:20px;z-index:50}.modalbg.show{display:flex}.modal{background:#fff;width:min(460px,100%);border-radius:18px;padding:24px;position:relative}.close{position:absolute;right:15px;top:12px;border:0;background:transparent;font-size:25px;cursor:pointer}.modal h2{margin-top:0}.form{display:grid;gap:11px}.form label{font-size:13px;font-weight:700}.form input{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;outline:0}.form input:focus{border-color:var(--green)}.form button{padding:12px;border:0;border-radius:10px;background:var(--green);color:#fff;font-weight:800;cursor:pointer}.switch{text-align:center;font-size:13px;margin-top:13px}.switch button{border:0;background:none;color:var(--green);font-weight:800;cursor:pointer}.profile{background:#eef6f0;border-radius:14px;padding:15px;margin-bottom:15px}.points{font-size:27px;font-weight:900;color:var(--green)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17231d;color:#fff;padding:12px 16px;border-radius:12px;display:none;z-index:100}.toast.show{display:block}.empty{padding:30px;text-align:center;background:#fff;border:1px dashed var(--line);border-radius:14px}.badge{display:inline-block;background:#e8f5ec;color:var(--green);font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;margin-bottom:9px}
+@media(max-width:800px){.grid{grid-template-columns:1fr 1fr}.how{grid-template-columns:1fr}.tag{display:block}.nav .optional{display:none}.hero{padding-top:40px}.search{flex-direction:column}.search button{width:100%}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.nav{padding:11px 13px}.logo{font-size:24px}.nav button{padding:8px}.hero h1{font-size:40px}.wrap{padding:28px 14px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <nav class="nav">
+    <div class="logo" onclick="goHome()">MOVAJÁ</div><div class="tag">Sua viagem. Seus pontos.</div>
+    <div class="navspacer"></div>
+    <button class="optional" onclick="showFavorites()">♥ Favoritos</button>
+    <button id="accountBtn" class="primary" onclick="openAuth('login')">Entrar</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <span class="badge">PROTÓTIPO DE TESTE</span>
+    <h1>Encontre sua próxima estadia.</h1>
+    <p>Pesquise hotéis, compare opções e avance para o parceiro de reserva. Nesta versão, os links são <b>fictícios</b> para testar o fluxo da MOVAJÁ.</p>
+    <div class="search">
+      <input id="searchInput" placeholder="Para onde você quer viajar? Ex.: Rio, Gramado, Salvador">
+      <button onclick="searchHotels()">Pesquisar</button>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="hotelsSection">
+  <div class="sectionhead"><div><h2>Hotéis em destaque</h2><div class="muted" id="resultText">Escolha uma opção para conhecer os detalhes.</div></div></div>
+  <div class="grid" id="hotelGrid"></div>
+</section>
+
+<section class="wrap">
+  <div class="sectionhead"><div><h2>Como a MOVAJÁ funciona</h2></div></div>
+  <div class="how">
+    <div class="step"><b>1. Você pesquisa</b><span class="muted">Encontre hotéis e experiências dentro da plataforma.</span></div>
+    <div class="step"><b>2. Você escolhe</b><span class="muted">Veja fotos, localização, avaliação e preço de teste.</span></div>
+    <div class="step"><b>3. Você reserva</b><span class="muted">O botão leva ao parceiro. Aqui usamos um link fictício.</span></div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="footer-inner"><b>MOVAJÁ</b><p>Protótipo funcional — contas, busca, favoritos e redirecionamento de teste.</p><small>Os hotéis, preços e links exibidos nesta demonstração são dados fictícios/ilustrativos.</small></div></footer>
+
+<div id="modalBg" class="modalbg" onclick="if(event.target===this)closeModal()"><div class="modal" id="modal"></div></div>
+<div id="toast" class="toast"></div>
+
+<script>
+const hotels=[
+ {id:1,name:"Hotel Vista do Mar",city:"Rio de Janeiro, RJ",rating:"9,2",price:289,img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80"},
+ {id:2,name:"Refúgio da Serra",city:"Gramado, RS",rating:"9,5",price:329,img:"https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1000&q=80"},
+ {id:3,name:"Bahia Sol Resort",city:"Salvador, BA",rating:"8,9",price:419,img:"https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1000&q=80"},
+ {id:4,name:"Centro Boutique",city:"São Paulo, SP",rating:"9,0",price:259,img:"https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=1000&q=80"},
+ {id:5,name:"Pousada Encanto",city:"Petrópolis, RJ",rating:"9,4",price:219,img:"https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80"},
+ {id:6,name:"Praia Azul Hotel",city:"Maceió, AL",rating:"9,1",price:379,img:"https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&w=1000&q=80"}
+];
+
+function currentUser(){try{return JSON.parse(localStorage.getItem("movaja_user")||"null")}catch{return null}}
+function users(){try{return JSON.parse(localStorage.getItem("movaja_users")||"[]")}catch{return []}}
+function saveUsers(x){localStorage.setItem("movaja_users",JSON.stringify(x))}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600)}
+function renderHotels(list=hotels){
+ const g=document.getElementById("hotelGrid");
+ if(!list.length){g.innerHTML='<div class="empty">Nenhum hotel encontrado. Tente outra cidade.</div>';return}
+ g.innerHTML=list.map(h=>`<article class="hotel">
+  <img src="${h.img}" alt="${h.name}">
+  <div class="hotel-body"><div class="row"><div><h3>${h.name}</h3><div class="location">${h.city}</div></div><div class="rating">★ ${h.rating}</div></div>
+  <div class="price">R$ ${h.price}<small> / noite</small></div>
+  <div class="actions"><button onclick="toggleFavorite(${h.id})">♥ Favoritar</button><button class="book" onclick="hotelDetails(${h.id})">Ver hotel</button></div></div>
+ </article>`).join("");
+}
+function searchHotels(){
+ const q=document.getElementById("searchInput").value.trim().toLowerCase();
+ const list=q?hotels.filter(h=>(h.name+" "+h.city).toLowerCase().includes(q)):hotels;
+ document.getElementById("resultText").textContent=q?`${list.length} opção(ões) encontrada(s) para "${q}".`:"Escolha uma opção para conhecer os detalhes.";
+ renderHotels(list);document.getElementById("hotelsSection").scrollIntoView({behavior:"smooth"});
+}
+function hotelDetails(id){
+ const h=hotels.find(x=>x.id===id);
+ const u=currentUser();
+ document.getElementById("modal").innerHTML=`<button class="close" onclick="closeModal()">×</button><img src="${h.img}" style="width:100%;height:190px;object-fit:cover;border-radius:12px"><h2>${h.name}</h2><p class="muted">${h.city} · ★ ${h.rating}</p><p>Diária de teste a partir de <b>R$ ${h.price}</b>.</p><div class="notice"><b>Link de afiliado de teste.</b><br>Ao clicar, esta demonstração abrirá uma página fictícia simulando o parceiro. Nenhuma reserva real será feita.</div><button class="form button" style="width:100%;padding:12px;border:0;border-radius:10px;background:var(--green);color:#fff;font-weight:800;cursor:pointer" onclick="fakeAffiliate(${h.id})">Ir para o site parceiro →</button>${u?'<p style="font-size:12px;color:var(--muted);margin-bottom:0">Você está conectado como '+u.name+'.</p>':''}`;
+ document.getElementById("modalBg").classList.add("show");
+}
+function fakeAffiliate(id){
+ const h=hotels.find(x=>x.id===id);
+ const fakeUrl="https://example.com/movaja-demo?hotel="+encodeURIComponent(h.id)+"&subid=MOVAJATEST";
+ closeModal();toast("Redirecionamento de teste iniciado…");
+ setTimeout(()=>window.open(fakeUrl,"_blank"),500);
+}
+function openAuth(mode="login"){
+ const m=document.getElementById("modal");
+ const login=mode==="login";
+ m.innerHTML=`<button class="close" onclick="closeModal()">×</button><h2>${login?"Entrar na MOVAJÁ":"Criar conta"}</h2><form class="form" onsubmit="${login?"login(event)":"register(event)"}">
+ ${!login?'<div><label>Nome</label><input id="name" required placeholder="Seu nome"></div>':''}
+ <div><label>E-mail</label><input id="email" type="email" required placeholder="voce@email.com"></div>
+ <div><label>Senha</label><input id="password" type="password" minlength="6" required placeholder="Mínimo 6 caracteres"></div>
+ <button type="submit">${login?"Entrar":"Criar minha conta"}</button></form>
+ <div class="switch">${login?"Ainda não tem conta?":"Já tem uma conta?"} <button onclick="openAuth('${login?"register":"login"}')">${login?"Criar conta":"Entrar"}</button></div>
+ <p style="font-size:11px;color:var(--muted)">Demonstração: os dados ficam somente neste navegador usando armazenamento local.</p>`;
+ document.getElementById("modalBg").classList.add("show");
+}
+function register(e){e.preventDefault();let us=users(),email=document.getElementById("email").value.trim().toLowerCase();if(us.some(x=>x.email===email)){toast("Esse e-mail já está cadastrado.");return}let u={name:document.getElementById("name").value.trim(),email,password:document.getElementById("password").value,points:0};us.push(u);saveUsers(us);localStorage.setItem("movaja_user",JSON.stringify(u));closeModal();updateAccount();toast("Conta criada com sucesso!");}
+function login(e){e.preventDefault();let email=document.getElementById("email").value.trim().toLowerCase(),pass=document.getElementById("password").value, u=users().find(x=>x.email===email&&x.password===pass);if(!u){toast("E-mail ou senha incorretos.");return}localStorage.setItem("movaja_user",JSON.stringify(u));closeModal();updateAccount();toast("Bem-vindo(a), "+u.name+"!");}
+function logout(){localStorage.removeItem("movaja_user");updateAccount();toast("Você saiu da conta.")}
+function updateAccount(){let b=document.getElementById("accountBtn"),u=currentUser();if(u){b.textContent="Minha conta";b.onclick=showAccount}else{b.textContent="Entrar";b.onclick=()=>openAuth("login")}}
+function showAccount(){let u=currentUser();document.getElementById("modal").innerHTML=`<button class="close" onclick="closeModal()">×</button><h2>Minha conta</h2><div class="profile"><b>${u.name}</b><div class="muted">${u.email}</div><div class="points">${u.points||0} MOVAJÁ Pontos</div></div><button class="form" style="width:100%;padding:12px;border:0;border-radius:10px;background:#fff;border:1px solid var(--line);cursor:pointer" onclick="logout();closeModal()">Sair da conta</button>`;document.getElementById("modalBg").classList.add("show")}
+function favorites(){try{return JSON.parse(localStorage.getItem("movaja_favs")||"[]")}catch{return []}}
+function toggleFavorite(id){let f=favorites();if(f.includes(id))f=f.filter(x=>x!==id);else f.push(id);localStorage.setItem("movaja_favs",JSON.stringify(f));toast(f.includes(id)?"Adicionado aos favoritos.":"Removido dos favoritos.")}
+function showFavorites(){let f=favorites(),list=hotels.filter(h=>f.includes(h.id));document.getElementById("resultText").textContent=list.length?`${list.length} favorito(s).`:"Você ainda não favoritou nenhum hotel.";renderHotels(list);document.getElementById("hotelsSection").scrollIntoView({behavior:"smooth"})}
+function closeModal(){document.getElementById("modalBg").classList.remove("show")}
+function goHome(){window.scrollTo({top:0,behavior:"smooth"});document.getElementById("searchInput").value="";renderHotels();document.getElementById("resultText").textContent="Escolha uma opção para conhecer os detalhes."}
+renderHotels();updateAccount();
+</script>
+</body>
+</html>
