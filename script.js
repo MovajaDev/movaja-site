@@ -1,8 +1,8 @@
 // CATÁLOGO COMPLETO MOVAJÁ
-// Categorias: 'carteiras', 'sapatos', 'camisetas', 'jaquetas', 'bones'
+// Categorias: 'carteiras', 'sapatos', 'camisas', 'calcas', 'shorts', 'relogios', 'oculos', 'pulseiras', 'bones', 'perfumes'
 
 const products = [
-  // --- CARTEIRAS & ACESSÓRIOS ---
+  // --- CARTEIRAS & PORTA-CARTÕES (27 Produtos) ---
   { id: 1, title: "Carteira Masculina Monograma Premium", category: "carteiras", style: "Old Money", price: "R$ 653,18", badge: "Destaque", image: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=500&auto=format&fit=crop&q=80", platform: "Mercado Livre", link: "https://meli.la/1LkzWtw" },
   { id: 2, title: "Porta-Cartões Slim Canvas Monograma", category: "carteiras", style: "Old Money", price: "R$ 653,18", badge: "Mais Vendido", image: "https://images.unsplash.com/photo-1606503153255-59d8b8b82176?w=500&auto=format&fit=crop&q=80", platform: "Mercado Livre", link: "https://meli.la/2Xidkos" },
   { id: 3, title: "Carteira Masculina Slim Monograma Dark", category: "carteiras", style: "Old Money", price: "R$ 671,62", badge: "Elegante", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&auto=format&fit=crop&q=80", platform: "Mercado Livre", link: "https://meli.la/1BnCxWx" },
@@ -44,7 +44,10 @@ function renderProducts(categoryFilter = 'all') {
     : products.filter(p => p.category === categoryFilter);
 
   if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #8a8a9e;">Novos produtos desta categoria serão adicionados em breve!</div>`;
+    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: #8a8a9e;">
+      <h3>Em breve novidades nesta secção!</h3>
+      <p style="margin-top:0.5rem; font-size:0.9rem;">Estamos a preparar a seleção das melhores peças desta categoria.</p>
+    </div>`;
     return;
   }
 
