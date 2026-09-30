@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOVAJÁ | Curadoria Premium</title>
+  <title>MOVAJÁ | Curadoria de Moda & Acessórios Premium</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,39 +11,47 @@
 </head>
 <body>
 
-  <!-- Background Canvas -->
+  <!-- Fundo Interativo 3D -->
   <canvas id="bg-canvas"></canvas>
 
   <!-- Navbar -->
   <header class="navbar">
     <a href="#" class="logo-text">MOVAJÁ<span class="logo-shine"></span></a>
     <nav class="nav-links">
-      <a href="#catalogo" class="nav-item">Coleção</a>
+      <a href="#catalogo" class="nav-item">Catálogo</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <span class="hero-tag">Curadoria Exclusiva 2026</span>
+      <span class="hero-tag">Curadoria Oficial MOVAJÁ</span>
       <h1 class="hero-title">O SEU ESTILO. <br><span class="gold-text">ELEVADO AO MÁXIMO.</span></h1>
-      <p class="hero-desc">Acessórios e peças exclusivas selecionadas para os estilos Old Money e Resort.</p>
-      <a href="#catalogo" class="cta-button">Explorar Coleção →</a>
+      <p class="hero-desc">Sapatos, vestuário, relógios, perfumes e acessórios selecionados das melhores lojas.</p>
+      <a href="#catalogo" class="cta-button">Ver Catálogo Completo →</a>
     </div>
   </section>
 
-  <!-- Catálogo -->
+  <!-- Seção do Catálogo -->
   <main id="catalogo" class="catalog-section">
     <div class="section-header">
-      <h2>Coleções em Destaque</h2>
-      <p>Selecione a sua estética preferida</p>
+      <h2>Explorar por Categoria</h2>
+      <p>Selecione a secção para filtrar o nosso catálogo</p>
     </div>
 
-    <!-- Filtros -->
+    <!-- Filtros de Categorias em Carrossel Horizontal -->
     <div class="filter-bar">
-      <button class="filter-btn active" data-filter="all">Todos os Itens</button>
-      <button class="filter-btn" data-filter="old-money">Old Money</button>
-      <button class="filter-btn" data-filter="resort">Resort</button>
+      <button class="filter-btn active" data-category="all">Todos os Produtos</button>
+      <button class="filter-btn" data-category="carteiras">Carteiras & Porta-Cartões</button>
+      <button class="filter-btn" data-category="sapatos">Sapatos & Tênis</button>
+      <button class="filter-btn" data-category="camisas">Camisas & Polos</button>
+      <button class="filter-btn" data-category="calcas">Calças</button>
+      <button class="filter-btn" data-category="shorts">Shorts & Bermudas</button>
+      <button class="filter-btn" data-category="relogios">Relógios</button>
+      <button class="filter-btn" data-category="oculos">Óculos de Sol</button>
+      <button class="filter-btn" data-category="pulseiras">Pulseiras & Acessórios</button>
+      <button class="filter-btn" data-category="bones">Bonés & Chapéus</button>
+      <button class="filter-btn" data-category="perfumes">Perfumes & Fragrâncias</button>
     </div>
 
     <!-- Grid de Produtos -->
@@ -51,7 +59,7 @@
   </main>
 
   <footer class="footer">
-    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados.</p>
+    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados. Redirecionamos para vendedores oficiais verficados.</p>
   </footer>
 
   <script src="./script.js"></script>
