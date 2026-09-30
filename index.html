@@ -1,107 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MOVAJÁ — Seu estilo. Sua era.</title>
-<meta name="description" content="MOVAJÁ — descubra moda, estilos e peças que combinam com a sua era.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVAJÁ | Curadoria Premium de Moda & Acessórios</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="noise"></div>
-<header class="nav">
-  <a class="logo" href="#"><span>✦</span>MOVAJÁ</a>
-  <nav>
-    <a href="#descobrir">Descobrir</a>
-    <a href="#estilos">Estilos</a>
-    <a href="#em-alta">Em alta</a>
-  </nav>
-  <div class="nav-actions">
-    <button class="icon-btn" id="openSearch" aria-label="Pesquisar">⌕</button>
-    <button class="icon-btn" id="openFav" aria-label="Favoritos">♡ <b id="favCount">0</b></button>
-    <button class="menu-btn" id="menuBtn">☰</button>
-  </div>
-</header>
 
-<div class="search-overlay" id="searchOverlay">
-  <button class="close" id="closeSearch">×</button>
-  <div class="search-box">
-    <span>⌕</span><input id="globalSearch" autofocus placeholder="Procure por boné, tênis, old money, motorsport...">
-  </div>
-  <p>Experimente: <button class="chip search-chip">old money</button><button class="chip search-chip">motorsport</button><button class="chip search-chip">streetwear</button></p>
-</div>
+  <!-- Fundo 3D Interativo -->
+  <canvas id="bg-canvas"></canvas>
 
-<main>
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content reveal">
-    <div class="eyebrow">MOVAJÁ / CURADORIA 001</div>
-    <h1>Seu estilo.<br><em>Sua era.</em></h1>
-    <p>Uma nova forma de descobrir moda. Peças, referências e tendências selecionadas para quem não quer vestir o comum.</p>
-    <div class="hero-actions">
-      <a href="#descobrir" class="btn btn-gold">EXPLORAR AGORA <span>→</span></a>
-      <button class="text-btn" id="styleQuiz">DESCOBRIR MEU ESTILO ↗</button>
+  <!-- Cabeçalho / Navbar -->
+  <header class="navbar">
+    <div class="logo-container">
+      <a href="#" class="logo-text">MOVAJÁ<span class="logo-shine"></span></a>
     </div>
-  </div>
-  <div class="hero-orbit">
-    <div class="orbit o1"></div><div class="orbit o2"></div>
-    <div class="monogram">M<small>MOVAJÁ</small></div>
-  </div>
-  <div class="scroll-cue">SCROLL <span>↓</span></div>
-</section>
+    <nav class="nav-links">
+      <a href="#catalogo" class="nav-item">Coleção</a>
+      <a href="#estilos" class="nav-item">Estilos</a>
+    </nav>
+  </header>
 
-<section class="marquee"><div>OLD MONEY ✦ STREETWEAR ✦ MOTORSPORT ✦ COLLEGE ✦ RESORT ✦ OLD MONEY ✦ STREETWEAR ✦ MOTORSPORT ✦</div></section>
-
-<section class="section" id="descobrir">
-  <div class="section-title reveal"><div><span class="eyebrow">01 / DISCOVER</span><h2>Encontre a sua <i>vibe.</i></h2></div><p>Não é sobre seguir uma tendência.<br>É sobre encontrar a que combina com você.</p></div>
-  <div class="style-cards" id="estilos">
-    <button class="style-card active" data-style="Todos"><span>✦</span><strong>Todos</strong><small>ver tudo</small></button>
-    <button class="style-card" data-style="Old Money"><span>♜</span><strong>Old Money</strong><small>elegante · clássico</small></button>
-    <button class="style-card" data-style="Streetwear"><span>◈</span><strong>Streetwear</strong><small>urbano · oversized</small></button>
-    <button class="style-card" data-style="Motorsport"><span>◉</span><strong>Motorsport</strong><small>racing · vintage</small></button>
-    <button class="style-card" data-style="College"><span>✎</span><strong>College</strong><small>preppy · casual</small></button>
-    <button class="style-card" data-style="Resort"><span>☼</span><strong>Resort</strong><small>leve · premium</small></button>
-  </div>
-</section>
-
-<section class="section products-section" id="em-alta">
-  <div class="section-title reveal">
-    <div><span class="eyebrow">02 / NOW</span><h2>O que está <i>em alta.</i></h2></div>
-    <div class="controls">
-      <select id="sort"><option value="featured">Destaques</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select>
+  <!-- Hero Section Interativa -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">Curadoria Exclusiva 2026</span>
+      <h1 class="hero-title">O SEU ESTILO. <br><span class="gold-text">ELEVADO AO MÁXIMO.</span></h1>
+      <p class="hero-desc">Peças selecionadas a dedo para os estilos Old Money, Streetwear, Motorsport e Resort.</p>
+      <a href="#catalogo" class="cta-button">Explorar Coleção <span class="arrow">→</span></a>
     </div>
-  </div>
-  <div class="product-grid" id="productGrid"></div>
-</section>
+  </section>
 
-<section class="editorial reveal">
-  <div class="editorial-copy"><span class="eyebrow">MOVAJÁ EDIT</span><h2>A estética que<br><i>fala por você.</i></h2><p>Do clássico ao urbano, montamos referências para você descobrir combinações novas sem perder sua identidade.</p><button class="btn btn-light" id="lookbookBtn">ABRIR LOOKBOOK →</button></div>
-  <div class="editorial-art"><div class="art-ring"></div><div class="art-word">ERA</div><span>001 / 2026</span></div>
-</section>
+  <!-- Seção do Catálogo com Filtros -->
+  <main id="catalogo" class="catalog-section">
+    <div class="section-header">
+      <h2>Coleções em Destaque</h2>
+      <p>Selecione a sua estética preferida</p>
+    </div>
 
-<section class="section">
-  <div class="section-title reveal"><div><span class="eyebrow">03 / EDITS</span><h2>Escolha uma <i>era.</i></h2></div></div>
-  <div class="edit-grid">
-    <button data-style="Old Money"><div>♜</div><span>OLD MONEY</span><small>silhuetas clássicas</small></button>
-    <button data-style="Motorsport"><div>◉</div><span>MOTORSPORT</span><small>racing, college & vintage</small></button>
-    <button data-style="Streetwear"><div>◈</div><span>STREETWEAR</span><small>o urbano sem regras</small></button>
-  </div>
-</section>
+    <!-- Botões de Filtro -->
+    <div class="filter-bar" id="estilos">
+      <button class="filter-btn active" data-filter="all">Todos os Itens</button>
+      <button class="filter-btn" data-filter="old-money">Old Money</button>
+      <button class="filter-btn" data-filter="resort">Resort</button>
+      <button class="filter-btn" data-filter="streetwear">Streetwear</button>
+      <button class="filter-btn" data-filter="motorsport">Motorsport</button>
+    </div>
 
-<section class="newsletter">
-  <div><span class="eyebrow">MOVAJÁ INSIDER</span><h2>Seu próximo achado<br>pode chegar primeiro.</h2></div>
-  <form id="newsletter"><input type="email" placeholder="seu melhor e-mail" required><button>ENTRAR NA LISTA →</button></form>
-</section>
-</main>
+    <!-- Grid de Produtos -->
+    <div class="product-grid" id="product-grid">
+      <!-- Injetado dinamicamente via script.js -->
+    </div>
+  </main>
 
-<footer><div class="footer-logo">✦ MOVAJÁ</div><p>Seu estilo. Sua era.</p><div>© 2026 MOVAJÁ</div></footer>
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados. Redirecionamos para os vendedores oficiais no Mercado Livre & Shopee.</p>
+  </footer>
 
-<div class="modal" id="productModal"><div class="modal-card"><button class="close" data-close>×</button><div id="modalContent"></div></div></div>
-<div class="modal" id="quizModal"><div class="modal-card quiz"><button class="close" data-close>×</button><span class="eyebrow">STYLE FINDER</span><h2>Qual é a sua era?</h2><p>Escolha o que mais combina com você.</p><div id="quizOptions"></div></div></div>
-<div class="toast" id="toast"></div>
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
