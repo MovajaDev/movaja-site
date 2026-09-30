@@ -1,4 +1,3 @@
-// CATÁLOGO COMPLETO MOVAJÁ (27 PRODUTOS)
 const products = [
   { id: 1, title: "Carteira Masculina Monograma Premium", category: "old-money", style: "Old Money", price: "R$ 653,18", badge: "Destaque", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1LkzWtw" },
   { id: 2, title: "Porta-Cartões Slim Canvas Monograma", category: "old-money", style: "Old Money", price: "R$ 653,18", badge: "Mais Vendido", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2Xidkos" },
@@ -29,7 +28,6 @@ const products = [
   { id: 27, title: "Carteira Masculina Couro Epi Black Minimalist", category: "old-money", style: "Old Money", price: "R$ 505,21", badge: "Minimalista", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/322qZTS" }
 ];
 
-// RENDERIZAÇÃO DOS PRODUTOS
 function renderProducts(filter = 'all') {
   const grid = document.getElementById('product-grid');
   if (!grid) return;
@@ -61,55 +59,8 @@ function renderProducts(filter = 'all') {
     `;
     grid.appendChild(card);
   });
-
-  // Reativa o observador de Scroll e o efeito Tilt nos novos cartões
-  initScrollReveal();
-  initTiltEffect();
 }
 
-// ANIMAÇÃO DE ENTRADA NO SCROLL (INTERSECTION OBSERVER)
-function initScrollReveal() {
-  const cards = document.querySelectorAll('.product-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        // Efeito dominó (stagger) na aparição
-        setTimeout(() => {
-          entry.target.classList.add('visible');
-        }, (index % 4) * 100);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  cards.forEach(card => observer.observe(card));
-}
-
-// EFEITO TILT 3D NOS CARTÕES
-function initTiltEffect() {
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -10;
-      const rotateY = ((x - centerX) / centerX) * 10;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-    });
-  });
-}
-
-// CANVAS FUNDO 3D DE PARTÍCULAS EM FLUTAÇÃO
 function init3DBackground() {
   const canvas = document.getElementById('bg-canvas');
   if (!canvas) return;
@@ -123,13 +74,13 @@ function init3DBackground() {
     height = canvas.height = window.innerHeight;
   });
 
-  const particles = Array.from({ length: 45 }, () => ({
+  const particles = Array.from({ length: 35 }, () => ({
     x: Math.random() * width,
     y: Math.random() * height,
     radius: Math.random() * 2 + 0.5,
-    vx: (Math.random() - 0.5) * 0.4,
-    vy: (Math.random() - 0.5) * 0.4,
-    alpha: Math.random() * 0.5 + 0.1
+    vx: (Math.random() - 0.5) * 0.3,
+    vy: (Math.random() - 0.5) * 0.3,
+    alpha: Math.random() * 0.5 + 0.2
   }));
 
   function animate() {
@@ -147,8 +98,6 @@ function init3DBackground() {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = '#d4af37';
       ctx.fill();
     });
 
@@ -158,12 +107,10 @@ function init3DBackground() {
   animate();
 }
 
-// INICIALIZAÇÃO
 document.addEventListener('DOMContentLoaded', () => {
   init3DBackground();
   renderProducts();
 
-  // Eventos nos botões de filtro
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -173,4 +120,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
