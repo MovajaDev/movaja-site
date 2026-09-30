@@ -1,53 +1,349 @@
-const products=[
-{id:1,name:"Boné Premium Minimal",style:"Old Money",price:58.95,emoji:"🧢",rating:"4.9",reviews:"105 avaliações",desc:"Uma peça limpa para composições clássicas e premium.",link:"#"},
-{id:2,name:"Boné Street Essential",style:"Streetwear",price:60.43,emoji:"🧢",rating:"4.9",reviews:"247 avaliações",desc:"Visual urbano e versátil para usar todos os dias.",link:"#"},
-{id:3,name:"Camiseta Racing Vintage",style:"Motorsport",price:69.99,emoji:"🏁",rating:"4.8",reviews:"—",desc:"Referência racing retrô para looks com personalidade.",link:"#"},
-{id:4,name:"Bermuda Alfaiataria",style:"Old Money",price:45.97,emoji:"🩳",rating:"4.7",reviews:"149 avaliações",desc:"Corte elegante que funciona com polo, camiseta ou camisa.",link:"#"},
-{id:5,name:"Moletom College",style:"College",price:61.99,emoji:"🎓",rating:"4.8",reviews:"—",desc:"A estética universitária clássica em uma peça casual.",link:"#"},
-{id:6,name:"Jaqueta Bomber Classic",style:"Old Money",price:127.42,emoji:"🧥",rating:"4.9",reviews:"—",desc:"Camada premium para elevar o visual sem exagero.",link:"#"},
-{id:7,name:"Camiseta Resort",style:"Resort",price:64.90,emoji:"🌴",rating:"4.8",reviews:"—",desc:"Leve, descontraída e pronta para uma estética resort.",link:"#"},
-{id:8,name:"Jaqueta Racing College",style:"Motorsport",price:135.15,emoji:"🏎️",rating:"5.0",reviews:"—",desc:"Mistura de college e automobilismo para um look marcante.",link:"#"}
+// Catálogo Completo MOVAJÁ - Mercado Livre & Shopee
+const products = [
+  {
+    id: 1,
+    title: "Carteira Masculina Monograma Premium",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 653,18",
+    badge: "Destaque",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1LkzWtw"
+  },
+  {
+    id: 2,
+    title: "Porta-Cartões Slim Canvas Monograma",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 653,18",
+    badge: "Mais Vendido",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2Xidkos"
+  },
+  {
+    id: 3,
+    title: "Carteira Masculina Slim Monograma Dark",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 671,62",
+    badge: "Elegante",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1BnCxWx"
+  },
+  {
+    id: 4,
+    title: "Porta-Cartões Minimalista Couro Texturizado",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 505,21",
+    badge: "Minimalista",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1QKV5Pn"
+  },
+  {
+    id: 5,
+    title: "Porta-Cartões Slim Monograma Dark Grey",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 587,32",
+    badge: "Premium",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2yAZSTy"
+  },
+  {
+    id: 6,
+    title: "Carteira Masculina Monograma Classic Beige",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 671,62",
+    badge: "Clássico",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/31G5uD3"
+  },
+  {
+    id: 7,
+    title: "Porta-Passaporte & Documentos Monograma Grey",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 653,18",
+    badge: "Viagem",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/23VzM2C"
+  },
+  {
+    id: 8,
+    title: "Porta-Cartões Slim Canvas White Monograma",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 616,13",
+    badge: "Novidade",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1AVTsCF"
+  },
+  {
+    id: 9,
+    title: "Carteira Masculina Print Winter Monograma White",
+    category: "old-money",
+    style: "Old Money / Resort",
+    price: "R$ 734,71",
+    badge: "Edição Especial",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2asDqDC"
+  },
+  {
+    id: 10,
+    title: "Carteira Compacta Jacquard Monograma Grey",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 616,13",
+    badge: "Sofisticado",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2rWhBTk"
+  },
+  {
+    id: 11,
+    title: "Porta-Passaporte Couro Monograma Beige",
+    category: "resort",
+    style: "Resort / Old Money",
+    price: "R$ 690,17",
+    badge: "Resort",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1yBXA4v"
+  },
+  {
+    id: 12,
+    title: "Porta-Cartões Vertical Monograma Dark & Green",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 542,20",
+    badge: "Moderno",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2KWKGE3"
+  },
+  {
+    id: 13,
+    title: "Carteira Masculina Monograma Animals Print",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 616,13",
+    badge: "Edição Especial",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2Q7p3NS"
+  },
+  {
+    id: 14,
+    title: "Carteira Masculina Monograma Beige & Cream",
+    category: "resort",
+    style: "Resort / Old Money",
+    price: "R$ 616,13",
+    badge: "Verão",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2RFc4fj"
+  },
+  {
+    id: 15,
+    title: "Carteira Feminina Compacta Monograma Peach Pink",
+    category: "resort",
+    style: "Resort",
+    price: "R$ 727,16",
+    badge: "Exclusivo",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2PYJHur"
+  },
+  {
+    id: 16,
+    title: "Carteira Masculina Monograma Ocean Blue Print",
+    category: "resort",
+    style: "Resort",
+    price: "R$ 616,13",
+    badge: "Edição de Verão",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/31Xbsc2"
+  },
+  {
+    id: 17,
+    title: "Porta-Passaporte Monograma Coral Orange",
+    category: "resort",
+    style: "Resort",
+    price: "R$ 616,13",
+    badge: "Vibrante",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2mvsNxb"
+  },
+  {
+    id: 18,
+    title: "Porta-Cartões Slim Vertical Monograma Navy Blue",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 505,21",
+    badge: "Elegante",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1sAqw5s"
+  },
+  {
+    id: 19,
+    title: "Porta-Passaporte Monograma Royal Blue Animals Print",
+    category: "old-money",
+    style: "Old Money / Resort",
+    price: "R$ 616,13",
+    badge: "Edição Especial",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1sQbcA9"
+  },
+  {
+    id: 20,
+    title: "Carteira Masculina Slim Damier Graphite",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 542,20",
+    badge: "Mais Vendido",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/2N71MLq"
+  },
+  {
+    id: 21,
+    title: "Carteira Masculina Slim Damier Ebene",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 542,20",
+    badge: "Clássico",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1PEoiEW"
+  },
+  {
+    id: 22,
+    title: "Carteira Masculina Slim Monograma Classic Brown",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 468,22",
+    badge: "Oportunidade",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/34e1zkU"
+  },
+  {
+    id: 23,
+    title: "Porta-Cartões Slim Canvas Monograma Beige & Gold Chains",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 542,20",
+    badge: "Elegante",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1t9MNZF"
+  },
+  {
+    id: 24,
+    title: "Porta-Cartões Vertical Couro Texturizado Black",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 616,13",
+    badge: "Minimalista",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1AoFtJb"
+  },
+  {
+    id: 25,
+    title: "Carteira Masculina Couro Texturizado Blue Mat",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 727,16",
+    badge: "Premium",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/1on4q8i"
+  },
+  {
+    id: 26,
+    title: "Carteira Masculina Couro Texturizado Black Gold Logo",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 708,61",
+    badge: "Premium",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/15YHxDQ"
+  },
+  {
+    id: 27,
+    title: "Carteira Masculina Couro Epi Black Minimalist",
+    category: "old-money",
+    style: "Old Money",
+    price: "R$ 505,21",
+    badge: "Minimalista",
+    image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp",
+    platform: "Mercado Livre",
+    link: "https://meli.la/322qZTS"
+  }
 ];
 
-const grid=document.querySelector("#productGrid"), sort=document.querySelector("#sort");
-let activeStyle="Todos", favorites=JSON.parse(localStorage.getItem("movaja-favs")||"[]");
+// Função de Renderização dos Produtos
+function renderProducts(filter = 'all') {
+  const grid = document.getElementById('product-grid');
+  if (!grid) return;
 
-function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
-function render(){
- let list=products.filter(p=>activeStyle==="Todos"||p.style===activeStyle);
- if(sort.value==="low") list.sort((a,b)=>a.price-b.price);
- if(sort.value==="high") list.sort((a,b)=>b.price-a.price);
- grid.innerHTML=list.map(p=>`
- <article class="product">
-  <div class="product-media">${p.emoji}<button class="heart ${favorites.includes(p.id)?"on":""}" data-fav="${p.id}">${favorites.includes(p.id)?"♥":"♡"}</button></div>
-  <div class="product-body"><div class="product-tag">${p.style}</div><h3>${p.name}</h3><div class="rating">★★★★★ <span>${p.rating} · ${p.reviews}</span></div><div class="price">${money(p.price)}</div><button class="buy" data-product="${p.id}">VER DETALHES →</button></div>
- </article>`).join("");
- document.querySelectorAll("[data-product]").forEach(b=>b.onclick=()=>openProduct(+b.dataset.product));
- document.querySelectorAll("[data-fav]").forEach(b=>b.onclick=e=>{e.stopPropagation();toggleFav(+b.dataset.fav)});
- document.querySelector("#favCount").textContent=favorites.length;
+  grid.innerHTML = '';
+
+  const filteredProducts = filter === 'all' 
+    ? products 
+    : products.filter(p => p.category === filter);
+
+  filteredProducts.forEach(product => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div class="product-badge">${product.badge}</div>
+      <div class="product-image">
+        <img src="${product.image}" alt="${product.title}" loading="lazy">
+      </div>
+      <div class="product-info">
+        <span class="product-style">${product.style} • ${product.platform}</span>
+        <h3 class="product-title">${product.title}</h3>
+        <div class="product-footer">
+          <span class="product-price">${product.price}</span>
+          <a href="${product.link}" target="_blank" rel="noopener noreferrer" class="buy-button">
+            Ver Oferta
+          </a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
 }
-function toggleFav(id){favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];localStorage.setItem("movaja-favs",JSON.stringify(favorites));render();toast(favorites.includes(id)?"Adicionado aos favoritos":"Removido dos favoritos")}
-function openProduct(id){
- const p=products.find(x=>x.id===id);
- document.querySelector("#modalContent").innerHTML=`<div class="modal-product"><div class="big">${p.emoji}</div><div><div class="product-tag">${p.style}</div><h2>${p.name}</h2><div class="rating">★★★★★ ${p.rating}</div><div class="price">${money(p.price)}</div><p>${p.desc}</p><p>Produto selecionado pela curadoria MOVAJÁ. O botão abaixo leva você para a Shopee.</p><a class="btn btn-gold" href="${p.link}" target="_blank" rel="noopener">VER NA SHOPEE →</a></div></div>`;
- document.querySelector("#productModal").classList.add("open");
-}
-function toast(msg){const t=document.querySelector("#toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
-function closeModals(){document.querySelectorAll(".modal").forEach(m=>m.classList.remove("open"))}
 
-document.querySelectorAll(".style-card,.edit-grid button").forEach(b=>b.addEventListener("click",()=>{activeStyle=b.dataset.style;document.querySelectorAll(".style-card").forEach(x=>x.classList.toggle("active",x.dataset.style===activeStyle));render();document.querySelector("#em-alta").scrollIntoView({behavior:"smooth"})}));
-sort.addEventListener("change",render);
+// Filtros por Categoria
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
 
-const searchOverlay=document.querySelector("#searchOverlay");
-document.querySelector("#openSearch").onclick=()=>{searchOverlay.classList.add("open");document.querySelector("#globalSearch").focus()};
-document.querySelector("#closeSearch").onclick=()=>searchOverlay.classList.remove("open");
-document.querySelectorAll(".search-chip").forEach(c=>c.onclick=()=>{document.querySelector("#globalSearch").value=c.textContent;filterSearch(c.textContent)});
-document.querySelector("#globalSearch").addEventListener("input",e=>filterSearch(e.target.value));
-function filterSearch(q){const s=q.toLowerCase();const found=products.filter(p=>(p.name+" "+p.style).toLowerCase().includes(s));document.querySelector("#productGrid").innerHTML=found.map(p=>`<article class="product"><div class="product-media">${p.emoji}</div><div class="product-body"><div class="product-tag">${p.style}</div><h3>${p.name}</h3><div class="price">${money(p.price)}</div><button class="buy" data-product="${p.id}">VER DETALHES →</button></div></article>`).join("");document.querySelectorAll("[data-product]").forEach(b=>b.onclick=()=>openProduct(+b.dataset.product));if(found.length){searchOverlay.classList.remove("open");document.querySelector("#em-alta").scrollIntoView({behavior:"smooth"})}}
-document.querySelectorAll("[data-close]").forEach(b=>b.onclick=closeModals);
-document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)closeModals()}));
-document.querySelector("#styleQuiz").onclick=()=>{document.querySelector("#quizModal").classList.add("open");document.querySelector("#quizOptions").innerHTML=["Eu gosto de peças clássicas e elegantes.","Meu estilo é urbano e oversized.","Eu curto racing, carros e vintage.","Gosto de college e preppy.","Prefiro uma estética leve e resort."].map((x,i)=>`<button data-q="${i}">${x} <b>→</b></button>`).join("");document.querySelectorAll("[data-q]").forEach(b=>b.onclick=()=>{const s=["Old Money","Streetwear","Motorsport","College","Resort"][+b.dataset.q];closeModals();activeStyle=s;document.querySelectorAll(".style-card").forEach(x=>x.classList.toggle("active",x.dataset.style===s));render();document.querySelector("#em-alta").scrollIntoView({behavior:"smooth"});toast("Sua era: "+s)})};
-document.querySelector("#lookbookBtn").onclick=()=>document.querySelector("#estilos").scrollIntoView({behavior:"smooth"});
-document.querySelector("#newsletter").onsubmit=e=>{e.preventDefault();toast("Você entrou na lista MOVAJÁ.");e.target.reset()};
-const obs=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("visible")),{threshold:.12});document.querySelectorAll(".reveal").forEach(e=>obs.observe(e));
-render();
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      const filter = e.target.getAttribute('data-filter');
+      renderProducts(filter);
+    });
+  });
+});
