@@ -1,60 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOVAJÁ — Viaje mais. Aproveite mais.</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;color:#10233f;background:#fff}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid #e8eef4;background:#fff}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#10233f}.brand img{width:48px;height:48px;border-radius:12px;object-fit:cover}.brand-name{font-size:25px;font-weight:800;letter-spacing:-1px}
-nav{display:flex;gap:26px}nav a{color:#34455c;text-decoration:none;font-size:15px;font-weight:600}
-.actions{display:flex;gap:8px;align-items:center}.login{border:0;background:none;padding:10px 12px;font-weight:600;color:#25405d}.signup{border:0;background:#1261a8;color:#fff;border-radius:10px;padding:11px 17px;font-weight:700}
-.hero{background:linear-gradient(135deg,#eef8ff,#f1fffc);padding:72px 7% 84px}.hero-inner{max-width:1180px;margin:auto}
-.eyebrow{color:#128f9b;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:1.4px;margin-bottom:14px}
-h1{font-size:clamp(40px,5vw,62px);line-height:1.02;letter-spacing:-2.5px;max-width:720px;margin-bottom:18px}
-.subtitle{font-size:18px;line-height:1.6;color:#53647a;max-width:650px;margin-bottom:34px}
-.search-box{background:#fff;border:1px solid #dbe5ef;border-radius:18px;padding:18px;box-shadow:0 15px 45px rgba(25,60,95,.12);display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:10px;align-items:end;max-width:1100px}
-.field label{display:block;font-size:12px;color:#718096;font-weight:700;margin:0 0 7px 4px}.field input{width:100%;border:1px solid #d8e1ea;border-radius:10px;padding:14px;font-size:14px;outline:none}
-.search-btn{height:47px;border:0;border-radius:10px;padding:0 23px;background:#1261a8;color:#fff;font-weight:800;font-size:15px}
-.section{padding:64px 7%;max-width:1320px;margin:auto}.section h2{font-size:30px;letter-spacing:-1px;margin-bottom:10px}.section-intro{color:#68788c;margin-bottom:30px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{border:1px solid #e5ebf2;border-radius:16px;padding:24px;background:#fff;min-height:180px}.icon{font-size:30px;margin-bottom:18px}.card h3{font-size:18px;margin-bottom:8px}.card p{color:#68788c;line-height:1.5;font-size:14px}
-.points{margin:0 7% 70px;padding:36px 42px;border-radius:22px;background:#102f52;color:#fff;display:flex;justify-content:space-between;gap:30px;align-items:center}.points h2{font-size:29px;margin-bottom:8px}.points p{color:#d4e1ee;max-width:650px;line-height:1.55}.points-btn{background:#fff;color:#102f52;border:0;border-radius:10px;padding:13px 19px;font-weight:800;white-space:nowrap}
-footer{border-top:1px solid #e7edf3;padding:28px 7%;color:#748397;font-size:13px;display:flex;justify-content:space-between}
-@media(max-width:900px){nav{display:none}.search-box{grid-template-columns:1fr 1fr}.search-btn{width:100%}.cards{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){header{padding:0 5%}.brand-name{font-size:22px}.actions .login{display:none}.hero{padding:48px 5% 55px}h1{letter-spacing:-1.5px}.search-box{grid-template-columns:1fr;padding:14px}.section{padding:48px 5%}.cards{grid-template-columns:1fr}.points{margin:0 5% 48px;padding:28px;display:block}.points-btn{margin-top:20px}footer{padding:22px 5%;display:block}.footer-right{margin-top:8px}}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MOVAJÁ — Seu estilo. Sua era.</title>
+<meta name="description" content="MOVAJÁ — descubra moda, estilos e peças que combinam com a sua era.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<a class="brand" href="#"><img src="logo-movaja.png" alt="Logo MOVAJÁ"><span class="brand-name">MOVAJÁ</span></a>
-<nav><a href="#">Hotéis</a><a href="#">Carros</a><a href="#">Passeios</a><a href="#">MOVAJÁ Pontos</a></nav>
-<div class="actions"><button class="login">Entrar</button><button class="signup">Criar conta</button></div>
+<div class="noise"></div>
+<header class="nav">
+  <a class="logo" href="#"><span>✦</span>MOVAJÁ</a>
+  <nav>
+    <a href="#descobrir">Descobrir</a>
+    <a href="#estilos">Estilos</a>
+    <a href="#em-alta">Em alta</a>
+  </nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="openSearch" aria-label="Pesquisar">⌕</button>
+    <button class="icon-btn" id="openFav" aria-label="Favoritos">♡ <b id="favCount">0</b></button>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
 </header>
-<main>
-<section class="hero"><div class="hero-inner">
-<div class="eyebrow">Seu próximo destino começa aqui</div>
-<h1>Viaje mais.<br>Aproveite mais.</h1>
-<p class="subtitle">Encontre hospedagens, aluguel de carros e experiências para sua viagem — com benefícios do programa MOVAJÁ Pontos.</p>
-<div class="search-box">
-<div class="field"><label>Para onde?</label><input placeholder="Cidade, hotel ou destino"></div>
-<div class="field"><label>Check-in</label><input type="date"></div>
-<div class="field"><label>Check-out</label><input type="date"></div>
-<div class="field"><label>Hóspedes</label><input value="2 hóspedes"></div>
-<button class="search-btn">Buscar</button>
+
+<div class="search-overlay" id="searchOverlay">
+  <button class="close" id="closeSearch">×</button>
+  <div class="search-box">
+    <span>⌕</span><input id="globalSearch" autofocus placeholder="Procure por boné, tênis, old money, motorsport...">
+  </div>
+  <p>Experimente: <button class="chip search-chip">old money</button><button class="chip search-chip">motorsport</button><button class="chip search-chip">streetwear</button></p>
 </div>
-</div></section>
+
+<main>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content reveal">
+    <div class="eyebrow">MOVAJÁ / CURADORIA 001</div>
+    <h1>Seu estilo.<br><em>Sua era.</em></h1>
+    <p>Uma nova forma de descobrir moda. Peças, referências e tendências selecionadas para quem não quer vestir o comum.</p>
+    <div class="hero-actions">
+      <a href="#descobrir" class="btn btn-gold">EXPLORAR AGORA <span>→</span></a>
+      <button class="text-btn" id="styleQuiz">DESCOBRIR MEU ESTILO ↗</button>
+    </div>
+  </div>
+  <div class="hero-orbit">
+    <div class="orbit o1"></div><div class="orbit o2"></div>
+    <div class="monogram">M<small>MOVAJÁ</small></div>
+  </div>
+  <div class="scroll-cue">SCROLL <span>↓</span></div>
+</section>
+
+<section class="marquee"><div>OLD MONEY ✦ STREETWEAR ✦ MOTORSPORT ✦ COLLEGE ✦ RESORT ✦ OLD MONEY ✦ STREETWEAR ✦ MOTORSPORT ✦</div></section>
+
+<section class="section" id="descobrir">
+  <div class="section-title reveal"><div><span class="eyebrow">01 / DISCOVER</span><h2>Encontre a sua <i>vibe.</i></h2></div><p>Não é sobre seguir uma tendência.<br>É sobre encontrar a que combina com você.</p></div>
+  <div class="style-cards" id="estilos">
+    <button class="style-card active" data-style="Todos"><span>✦</span><strong>Todos</strong><small>ver tudo</small></button>
+    <button class="style-card" data-style="Old Money"><span>♜</span><strong>Old Money</strong><small>elegante · clássico</small></button>
+    <button class="style-card" data-style="Streetwear"><span>◈</span><strong>Streetwear</strong><small>urbano · oversized</small></button>
+    <button class="style-card" data-style="Motorsport"><span>◉</span><strong>Motorsport</strong><small>racing · vintage</small></button>
+    <button class="style-card" data-style="College"><span>✎</span><strong>College</strong><small>preppy · casual</small></button>
+    <button class="style-card" data-style="Resort"><span>☼</span><strong>Resort</strong><small>leve · premium</small></button>
+  </div>
+</section>
+
+<section class="section products-section" id="em-alta">
+  <div class="section-title reveal">
+    <div><span class="eyebrow">02 / NOW</span><h2>O que está <i>em alta.</i></h2></div>
+    <div class="controls">
+      <select id="sort"><option value="featured">Destaques</option><option value="low">Menor preço</option><option value="high">Maior preço</option></select>
+    </div>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="editorial reveal">
+  <div class="editorial-copy"><span class="eyebrow">MOVAJÁ EDIT</span><h2>A estética que<br><i>fala por você.</i></h2><p>Do clássico ao urbano, montamos referências para você descobrir combinações novas sem perder sua identidade.</p><button class="btn btn-light" id="lookbookBtn">ABRIR LOOKBOOK →</button></div>
+  <div class="editorial-art"><div class="art-ring"></div><div class="art-word">ERA</div><span>001 / 2026</span></div>
+</section>
+
 <section class="section">
-<h2>Encontre tudo para sua viagem</h2><p class="section-intro">Uma experiência simples para pesquisar e planejar.</p>
-<div class="cards">
-<div class="card"><div class="icon">🏨</div><h3>Hotéis</h3><p>Pesquise hospedagens para diferentes destinos e estilos de viagem.</p></div>
-<div class="card"><div class="icon">🚗</div><h3>Aluguel de carros</h3><p>Encontre opções de mobilidade para aproveitar melhor seu destino.</p></div>
-<div class="card"><div class="icon">🎢</div><h3>Passeios e atrações</h3><p>Descubra experiências e atrações para deixar a viagem ainda melhor.</p></div>
-<div class="card"><div class="icon">⭐</div><h3>MOVAJÁ Pontos</h3><p>Acompanhe os benefícios gerados por suas reservas elegíveis.</p></div>
-</div></section>
-<section class="points"><div><h2>Viaje e aproveite seus benefícios</h2><p>Com o MOVAJÁ Pontos, suas reservas elegíveis podem gerar benefícios dentro do programa.</p></div><button class="points-btn">Conhecer o programa</button></section>
+  <div class="section-title reveal"><div><span class="eyebrow">03 / EDITS</span><h2>Escolha uma <i>era.</i></h2></div></div>
+  <div class="edit-grid">
+    <button data-style="Old Money"><div>♜</div><span>OLD MONEY</span><small>silhuetas clássicas</small></button>
+    <button data-style="Motorsport"><div>◉</div><span>MOTORSPORT</span><small>racing, college & vintage</small></button>
+    <button data-style="Streetwear"><div>◈</div><span>STREETWEAR</span><small>o urbano sem regras</small></button>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div><span class="eyebrow">MOVAJÁ INSIDER</span><h2>Seu próximo achado<br>pode chegar primeiro.</h2></div>
+  <form id="newsletter"><input type="email" placeholder="seu melhor e-mail" required><button>ENTRAR NA LISTA →</button></form>
+</section>
 </main>
-<footer><div>© 2026 MOVAJÁ</div><div class="footer-right">Viagens • Benefícios • Experiências</div></footer>
+
+<footer><div class="footer-logo">✦ MOVAJÁ</div><p>Seu estilo. Sua era.</p><div>© 2026 MOVAJÁ</div></footer>
+
+<div class="modal" id="productModal"><div class="modal-card"><button class="close" data-close>×</button><div id="modalContent"></div></div></div>
+<div class="modal" id="quizModal"><div class="modal-card quiz"><button class="close" data-close>×</button><span class="eyebrow">STYLE FINDER</span><h2>Qual é a sua era?</h2><p>Escolha o que mais combina com você.</p><div id="quizOptions"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
 </body>
 </html>
