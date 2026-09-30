@@ -3,65 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOVAJÁ | Curadoria Premium de Moda & Acessórios</title>
-  <link rel="stylesheet" href="style.css">
+  <title>MOVAJÁ | Curadoria Premium</title>
+  <link rel="stylesheet" href="./style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Fundo 3D Interativo -->
+  <!-- Background Canvas -->
   <canvas id="bg-canvas"></canvas>
 
-  <!-- Cabeçalho / Navbar -->
+  <!-- Navbar -->
   <header class="navbar">
-    <div class="logo-container">
-      <a href="#" class="logo-text">MOVAJÁ<span class="logo-shine"></span></a>
-    </div>
+    <a href="#" class="logo-text">MOVAJÁ<span class="logo-shine"></span></a>
     <nav class="nav-links">
       <a href="#catalogo" class="nav-item">Coleção</a>
-      <a href="#estilos" class="nav-item">Estilos</a>
     </nav>
   </header>
 
-  <!-- Hero Section Interativa -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <span class="hero-tag">Curadoria Exclusiva 2026</span>
       <h1 class="hero-title">O SEU ESTILO. <br><span class="gold-text">ELEVADO AO MÁXIMO.</span></h1>
-      <p class="hero-desc">Peças selecionadas a dedo para os estilos Old Money, Streetwear, Motorsport e Resort.</p>
-      <a href="#catalogo" class="cta-button">Explorar Coleção <span class="arrow">→</span></a>
+      <p class="hero-desc">Acessórios e peças exclusivas selecionadas para os estilos Old Money e Resort.</p>
+      <a href="#catalogo" class="cta-button">Explorar Coleção →</a>
     </div>
   </section>
 
-  <!-- Seção do Catálogo com Filtros -->
+  <!-- Catálogo -->
   <main id="catalogo" class="catalog-section">
     <div class="section-header">
       <h2>Coleções em Destaque</h2>
       <p>Selecione a sua estética preferida</p>
     </div>
 
-    <!-- Botões de Filtro -->
-    <div class="filter-bar" id="estilos">
+    <!-- Filtros -->
+    <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">Todos os Itens</button>
       <button class="filter-btn" data-filter="old-money">Old Money</button>
       <button class="filter-btn" data-filter="resort">Resort</button>
-      <button class="filter-btn" data-filter="streetwear">Streetwear</button>
-      <button class="filter-btn" data-filter="motorsport">Motorsport</button>
     </div>
 
     <!-- Grid de Produtos -->
-    <div class="product-grid" id="product-grid">
-      <!-- Injetado dinamicamente via script.js -->
-    </div>
+    <div class="product-grid" id="product-grid"></div>
   </main>
 
-  <!-- Rodapé -->
   <footer class="footer">
-    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados. Redirecionamos para os vendedores oficiais no Mercado Livre & Shopee.</p>
+    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
