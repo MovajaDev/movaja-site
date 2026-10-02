@@ -1,1167 +1,1236 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVAJÁ — Vista o seu momento.</title>
+    <title>MOVAJÁ | Moda Premium & Curadoria</title>
 
-<meta name="description"
-content="MOVAJÁ — curadoria de moda, acessórios e estilo. Descubra peças que combinam com você.">
+    <meta
+        name="description"
+        content="MOVAJÁ — Curadoria premium de moda, acessórios, Old Money e Streetwear."
+    >
 
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<script>
-tailwind.config={
-    theme:{
-        extend:{
-            colors:{
-                ink:'#070707',
-                gold:'#d6b25e'
-            },
-            fontFamily:{
-                sans:['Plus Jakarta Sans','sans-serif']
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#050505',
+                        gold: '#d4af37',
+                        gold2: '#f0d477'
+                    }
+                }
             }
         }
-    }
-}
-</script>
+    </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <style>
 
-<style>
+        * {
+            box-sizing: border-box;
+        }
 
-:root{
-    --gold:#d6b25e;
-    --bg:#050505;
-    --muted:#969696;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-*{
-    box-sizing:border-box;
-}
+        body {
+            margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            background:
+                radial-gradient(circle at 50% -20%, rgba(212,175,55,.08), transparent 35%),
+                #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-html{
-    scroll-behavior:smooth;
-}
+        ::selection {
+            background: #d4af37;
+            color: #050505;
+        }
 
-body{
-    margin:0;
-    background:var(--bg);
-    color:#fff;
-    font-family:'DM Sans',sans-serif;
-    overflow-x:hidden;
-}
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
 
-::selection{
-    background:var(--gold);
-    color:#000;
-}
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
 
-::-webkit-scrollbar{
-    width:7px;
-}
+        ::-webkit-scrollbar-thumb {
+            background: #252525;
+            border-radius: 20px;
+        }
 
-::-webkit-scrollbar-track{
-    background:#050505;
-}
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d4af37;
+        }
 
-::-webkit-scrollbar-thumb{
-    background:#2b2b2b;
-    border-radius:99px;
-}
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
 
-.serif{
-    font-family:'Playfair Display',serif;
-}
+        /* =========================================
+           PROGRESS BAR
+        ========================================= */
 
-.gold{
-    color:var(--gold);
-}
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            background: linear-gradient(
+                90deg,
+                #9c7c18,
+                #d4af37,
+                #fff0a8,
+                #d4af37
+            );
+            z-index: 9999;
+            box-shadow: 0 0 12px rgba(212,175,55,.8);
+        }
 
-.hero-bg{
-    background:
-    radial-gradient(
-        circle at 50% 35%,
-        #252017 0,
-        #0d0c0a 27%,
-        #050505 65%
-    );
-}
+        /* =========================================
+           HEADER
+        ========================================= */
 
-.grid-lines{
-    background-image:
-        linear-gradient(#fff009 1px,transparent 1px),
-        linear-gradient(90deg,#fff009 1px,transparent 1px);
+        .glass-header {
+            background: rgba(5,5,5,.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.07);
+            transition: .4s ease;
+        }
 
-    background-size:70px 70px;
-    opacity:.025;
-}
+        .glass-header.scrolled {
+            background: rgba(5,5,5,.94);
+            box-shadow: 0 15px 50px rgba(0,0,0,.3);
+        }
 
-.reveal{
-    opacity:0;
-    transform:translateY(30px);
+        .logo {
+            letter-spacing: .28em;
+            transition: .4s ease;
+        }
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
-}
+        .logo:hover {
+            letter-spacing: .38em;
+            color: #d4af37;
+        }
 
-.reveal.show{
-    opacity:1;
-    transform:none;
-}
+        .nav-link {
+            position: relative;
+        }
 
-.product-card{
-    transform-style:preserve-3d;
-    will-change:transform;
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 0;
+            height: 1px;
+            background: #d4af37;
+            transition: .35s ease;
+        }
 
-    transition:
-        box-shadow .35s,
-        border-color .35s,
-        transform .15s;
-}
+        .nav-link:hover::after {
+            width: 100%;
+        }
 
-.product-card:hover{
-    box-shadow:0 25px 70px #000;
-    border-color:#ffffff25;
-}
+        /* =========================================
+           HERO
+        ========================================= */
 
-.product-img{
-    transition:
-        transform .8s cubic-bezier(.2,.8,.2,1);
-}
+        .hero-image {
+            transform: scale(1.08);
+            transition: transform 2s cubic-bezier(.2,.8,.2,1);
+        }
 
-.product-card:hover .product-img{
-    transform:scale(1.07);
-}
+        .hero:hover .hero-image {
+            transform: scale(1.12);
+        }
 
-.glass{
-    background:rgba(12,12,12,.7);
-    backdrop-filter:blur(18px);
-    border:1px solid #ffffff12;
-}
+        .hero-overlay {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0,0,0,.72) 0%,
+                    rgba(0,0,0,.12) 45%,
+                    #050505 100%
+                );
+        }
 
-.cursor-dot{
-    position:fixed;
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:var(--gold);
-    pointer-events:none;
-    z-index:9999;
-    transform:translate(-50%,-50%);
-    mix-blend-mode:difference;
-}
+        .hero-title {
+            text-shadow:
+                0 5px 40px rgba(0,0,0,.8);
+        }
 
-.cursor-ring{
-    position:fixed;
-    width:34px;
-    height:34px;
-    border:1px solid #ffffff80;
-    border-radius:50%;
-    pointer-events:none;
-    z-index:9998;
-    transform:translate(-50%,-50%);
+        .gold-line {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #d4af37,
+                transparent
+            );
+            margin: 25px auto;
+        }
 
-    transition:
-        width .2s,
-        height .2s;
-}
+        .hero-button {
+            position: relative;
+            overflow: hidden;
+            transition: .4s ease;
+        }
 
-.marquee{
-    animation:marquee 20s linear infinite;
-}
+        .hero-button::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            transform: translateX(-110%);
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,.5),
+                transparent
+            );
+            transition: .7s ease;
+        }
 
-@keyframes marquee{
-    to{
-        transform:translateX(-50%);
-    }
-}
+        .hero-button:hover::before {
+            transform: translateX(110%);
+        }
 
-.float{
-    animation:float 5s ease-in-out infinite;
-}
+        /* =========================================
+           SECTION TITLE
+        ========================================= */
 
-@keyframes float{
-    50%{
-        transform:translateY(-12px);
-    }
-}
+        .section-kicker {
+            color: #d4af37;
+            font-size: 10px;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
 
-.noise:after{
-    content:"";
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
+        /* =========================================
+           SEARCH
+        ========================================= */
 
-    background-image:url(
-        "data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
-    );
-}
+        .search-box {
+            background: rgba(255,255,255,.035);
+            border: 1px solid rgba(255,255,255,.1);
+            transition: .35s ease;
+        }
 
-@media(max-width:768px){
+        .search-box:focus-within {
+            border-color: rgba(212,175,55,.55);
+            box-shadow:
+                0 0 0 4px rgba(212,175,55,.04),
+                0 10px 50px rgba(0,0,0,.2);
+        }
 
-    .cursor-dot,
-    .cursor-ring{
-        display:none;
-    }
+        .search-box input {
+            outline: none;
+        }
 
-}
+        /* =========================================
+           FILTERS
+        ========================================= */
 
-</style>
+        .filter-btn {
+            border: 1px solid rgba(255,255,255,.1);
+            color: #999;
+            transition: .35s ease;
+        }
+
+        .filter-btn:hover {
+            color: #fff;
+            border-color: rgba(212,175,55,.5);
+        }
+
+        .filter-btn.active {
+            color: #050505;
+            background: #d4af37;
+            border-color: #d4af37;
+            box-shadow: 0 8px 30px rgba(212,175,55,.12);
+        }
+
+        /* =========================================
+           PRODUCT CARD
+        ========================================= */
+
+        .product-card {
+            position: relative;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.045),
+                    rgba(255,255,255,.012)
+                );
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 4px;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+            transition:
+                transform .25s ease,
+                border-color .35s ease,
+                box-shadow .35s ease;
+        }
+
+        .product-card:hover {
+            border-color: rgba(212,175,55,.35);
+            box-shadow:
+                0 25px 80px rgba(0,0,0,.45),
+                0 0 35px rgba(212,175,55,.04);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .product-image {
+            transition:
+                transform .8s cubic-bezier(.2,.8,.2,1),
+                filter .5s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.09);
+            filter: saturate(1.05) contrast(1.04);
+        }
+
+        .product-image-wrapper::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,.12),
+                    transparent 30%,
+                    transparent 70%,
+                    rgba(212,175,55,.05)
+                );
+            opacity: 0;
+            transition: .5s ease;
+            pointer-events: none;
+        }
+
+        .product-card:hover .product-image-wrapper::after {
+            opacity: 1;
+        }
+
+        .product-glow {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(212,175,55,.16),
+                transparent 70%
+            );
+            pointer-events: none;
+            transform: translate(-50%,-50%);
+            opacity: 0;
+            transition: opacity .3s ease;
+            z-index: 3;
+        }
+
+        .product-card:hover .product-glow {
+            opacity: 1;
+        }
+
+        .category-pill {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 5;
+            padding: 7px 10px;
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            background: rgba(0,0,0,.65);
+            backdrop-filter: blur(12px);
+            color: #d4af37;
+            border: 1px solid rgba(212,175,55,.2);
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0,0,0,.58);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,.12);
+            z-index: 10;
+            transition: .3s ease;
+        }
+
+        .favorite-btn:hover {
+            border-color: #d4af37;
+            transform: scale(1.08);
+        }
+
+        .favorite-btn.active {
+            color: #d4af37;
+            border-color: rgba(212,175,55,.7);
+        }
+
+        .product-info {
+            position: relative;
+            z-index: 5;
+        }
+
+        .product-action {
+            transition: .35s ease;
+        }
+
+        .product-action:hover {
+            background: #d4af37;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .details-button {
+            border: 1px solid rgba(255,255,255,.1);
+            transition: .35s ease;
+        }
+
+        .details-button:hover {
+            border-color: #d4af37;
+            color: #d4af37;
+        }
+
+        /* =========================================
+           REVEAL
+        ========================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity .8s ease,
+                transform .8s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        #modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: .35s ease;
+        }
+
+        #modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            transform: translateY(30px) scale(.96);
+            transition: .4s cubic-bezier(.2,.8,.2,1);
+        }
+
+        #modal.open .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* =========================================
+           RANDOM BUTTON
+        ========================================= */
+
+        .random-btn {
+            position: relative;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .random-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212,175,55,.12);
+        }
+
+        /* =========================================
+           MOBILE MENU
+        ========================================= */
+
+        #mobileMenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease;
+        }
+
+        #mobileMenu.open {
+            max-height: 400px;
+        }
+
+        /* =========================================
+           CUSTOM CURSOR
+        ========================================= */
+
+        #cursorGlow {
+            position: fixed;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            pointer-events: none;
+            background: radial-gradient(
+                circle,
+                rgba(212,175,55,.06),
+                transparent 70%
+            );
+            transform: translate(-50%,-50%);
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+
+            #cursorGlow {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .product-card {
+                transform: none !important;
+            }
+
+        }
+
+    </style>
 </head>
-
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor-dot" id="dot"></div>
-<div class="cursor-ring" id="ring"></div>
-
-<!-- PROGRESSO DA PÁGINA -->
-<div
-id="progress"
-class="fixed top-0 left-0 h-[2px] bg-gold z-[100] w-0">
-</div>
-
-
-<!-- ================= HEADER ================= -->
-
-<header
-class="fixed top-0 w-full z-50 transition-all duration-500"
-id="nav">
-
-<div class="max-w-7xl mx-auto px-5 md:px-8 h-[78px] flex items-center justify-between">
-
-<a
-href="#"
-class="font-bold tracking-[.28em] text-lg">
-
-MOVAJÁ<span class="gold">.</span>
-
-</a>
-
-
-<nav
-class="hidden md:flex gap-8 text-[11px] tracking-[.22em] font-semibold text-white/65">
-
-<a
-href="#colecao"
-class="hover:text-white transition">
-
-COLEÇÃO
-
-</a>
-
-<a
-href="#manifesto"
-class="hover:text-white transition">
-
-MANIFESTO
-
-</a>
-
-<a
-href="#explorar"
-class="hover:text-white transition">
-
-EXPLORAR
-
-</a>
-
-</nav>
-
-
-<button
-onclick="document.getElementById('search').focus()"
-class="glass rounded-full px-4 py-2 text-[10px] tracking-widest flex items-center gap-2 hover:bg-white/10 transition">
-
-⌕
-
-<span class="hidden sm:block">
-BUSCAR
-</span>
-
-</button>
-
-</div>
-
-</header>
-
-
-
-<main>
-
-
-<!-- ================= HERO ================= -->
-
-<section
-class="hero-bg noise relative min-h-screen flex items-center justify-center overflow-hidden">
-
-<div class="absolute inset-0 grid-lines"></div>
-
-
-<div
-class="absolute w-[500px] h-[500px] rounded-full border border-white/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-</div>
-
-
-<div
-class="absolute w-[700px] h-[700px] rounded-full border border-white/[.025] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-</div>
-
-
-<div class="relative z-10 text-center px-5 pt-20">
-
-<p
-class="gold uppercase tracking-[.42em] text-[10px] font-semibold mb-7 reveal">
-
-Curadoria independente · 2026
-
-</p>
-
-
-<h1
-class="reveal text-[clamp(4rem,11vw,10rem)] leading-[.78] tracking-[-.07em] font-semibold">
-
-VISTA
-
-<br>
-
-<span class="serif italic font-normal text-white/75">
-o seu
-</span>
-
-<br>
-
-momento<span class="gold">.</span>
-
-</h1>
-
-
-<p
-class="reveal max-w-lg mx-auto mt-9 text-white/45 text-sm leading-7">
-
-Moda não é seguir uma tendência.
-É encontrar peças que fazem sentido para quem você está se tornando.
-
-</p>
-
-
-<div
-class="reveal mt-10 flex justify-center gap-3 flex-wrap">
-
-<a
-href="#colecao"
-class="bg-white text-black px-7 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-gold transition">
-
-EXPLORAR CURADORIA
-
-</a>
-
-
-<a
-href="#manifesto"
-class="border border-white/15 px-7 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-white/10 transition">
-
-CONHECER A MOVAJÁ
-
-</a>
-
-</div>
-
-</div>
-
-
-<div
-class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-[9px] tracking-[.3em] text-white/30">
-
-ROLE PARA DESCOBRIR
-
-<br>
-
-<span class="text-xl">
-↓
-</span>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= MANIFESTO ================= -->
-
-<section
-id="manifesto"
-class="py-28 md:py-40 max-w-7xl mx-auto px-5 md:px-8 reveal">
-
-<div
-class="grid md:grid-cols-12 gap-10 items-end">
-
-<div class="md:col-span-7">
-
-<span class="gold text-[10px] tracking-[.3em]">
-01 — MANIFESTO
-</span>
-
-
-<h2
-class="mt-5 text-4xl md:text-6xl tracking-tight">
-
-Menos catálogo.
-
-<br>
-
-<span class="serif italic text-white/50">
-Mais identidade.
-</span>
-
-</h2>
-
-</div>
-
-
-<p
-class="md:col-span-5 text-white/45 leading-7 text-sm">
-
-A MOVAJÁ conecta você a peças selecionadas
-para diferentes momentos e estilos.
-
-Uma experiência simples por fora,
-inteligente por dentro —
-feita para descobrir, combinar e comprar.
-
-</p>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= COLEÇÃO ================= -->
-
-<section
-id="colecao"
-class="max-w-7xl mx-auto px-5 md:px-8 pb-32">
-
-
-<div
-class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 reveal">
-
-<div>
-
-<span class="gold text-[10px] tracking-[.3em]">
-02 — CURADORIA
-</span>
-
-
-<h2
-class="text-4xl md:text-5xl mt-3 tracking-tight">
-
-Escolha seu
-
-<span class="serif italic text-white/60">
-mood.
-</span>
-
-</h2>
-
-</div>
-
-
-<div class="relative w-full lg:w-80">
-
-<input
-id="search"
-oninput="render()"
-placeholder="Pesquisar produto..."
-class="w-full bg-white/[.04] border border-white/10 rounded-full px-5 py-3.5 text-sm outline-none focus:border-gold/50 transition">
-
-
-<span
-class="absolute right-5 top-3.5 text-white/30">
-
-⌕
-
-</span>
-
-</div>
-
-</div>
-
-
-
-<!-- FILTROS -->
-
-<div
-class="flex gap-2 overflow-x-auto pb-4 mb-8 reveal"
-id="filters">
-</div>
-
-
-
-<!-- PRODUTOS -->
-
-<div
-id="products"
-class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-</div>
-
-
-<p
-id="empty"
-class="hidden text-center py-20 text-white/40">
-
-Nada encontrado.
-Tente outro termo.
-
-</p>
-
-</section>
-
-
-
-<!-- ================= MARQUEE ================= -->
-
-<section
-id="explorar"
-class="py-24 border-y border-white/5 overflow-hidden">
-
-<div
-class="marquee whitespace-nowrap flex w-max gap-8 text-[10px] tracking-[.35em] text-white/25">
-
-<span>
-MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
-</span>
-
-<span class="gold">
-MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
-</span>
-
-<span>
-MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
-</span>
-
-<span class="gold">
-MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
-</span>
-
-</div>
-
-</section>
-
-
-
-<!-- ================= SURPRESA ================= -->
-
-<section
-class="max-w-7xl mx-auto px-5 md:px-8 py-32 reveal">
-
-<div
-class="glass rounded-3xl p-8 md:p-16 relative overflow-hidden">
-
-<div
-class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-gold/10 blur-3xl">
-</div>
-
-
-<span class="gold text-[10px] tracking-[.3em]">
-03 — DESCOBERTA
-</span>
-
-
-<h2
-class="mt-5 text-4xl md:text-6xl max-w-3xl tracking-tight">
-
-Não sabe o que procurar?
-
-<br>
-
-<span class="serif italic text-white/50">
-
-Deixe a MOVAJÁ te levar.
-
-</span>
-
-</h2>
-
-
-<div
-class="mt-10 flex flex-wrap gap-3">
-
-<button
-onclick="randomPick()"
-class="bg-white text-black px-6 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-gold transition">
-
-SURPREENDA-ME
-
-</button>
-
-
-<a
-href="#colecao"
-class="border border-white/15 px-6 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-white/10 transition">
-
-VER TUDO
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer
-class="border-t border-white/5 py-14">
-
-<div
-class="max-w-7xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between gap-8">
-
-<div>
-
-<b class="tracking-[.25em]">
-
-MOVAJÁ<span class="gold">.</span>
-
-</b>
-
-
-<p class="text-white/30 text-xs mt-3">
-Vista o seu momento.
-</p>
-
-</div>
-
-
-<p
-class="text-white/25 text-xs max-w-md leading-6">
-
-A MOVAJÁ atua como vitrine digital de curadoria e afiliados.
-A compra é finalizada na plataforma parceira.
-
-</p>
-
-</div>
-
-</footer>
-
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-id="modal"
-class="fixed inset-0 z-[80] hidden items-center justify-center p-5 bg-black/80 backdrop-blur-xl">
-
-<div
-class="glass max-w-4xl w-full rounded-3xl overflow-hidden relative"
-id="modalbox">
-</div>
-
-</div>
-
-
-
-<script>
-
-/* ==========================================
-   PRODUTOS
-========================================== */
-
-const products=[
-
-{
-img:"assets/1000225819.jpg",
-alt:"Short",
-cat:"Roupas",
-name:"Short",
-url:"https://meli.la/131wUQ7"
-},
-
-{
-img:"assets/1000225816.jpg",
-alt:"Cinto",
-cat:"Acessórios",
-name:"Cinto",
-url:"https://meli.la/2GQc29P"
-},
-
-{
-img:"assets/1000225815.jpg",
-alt:"Camisa Polo",
-cat:"Roupas",
-name:"Camisa Polo",
-url:"https://meli.la/2QVNmiV"
-},
-
-{
-img:"assets/1000225814.jpg",
-alt:"Calça Alfaiataria",
-cat:"Old Money",
-name:"Calça Alfaiataria",
-url:"https://meli.la/1pbruPw"
-},
-
-{
-img:"assets/1000225813.jpg",
-alt:"Cuecas",
-cat:"Moda Íntima",
-name:"Cuecas",
-url:"https://meli.la/1WuZzrA"
-},
-
-{
-img:"assets/1000225812.jpg",
-alt:"Carteira",
-cat:"Acessórios",
-name:"Carteira",
-url:"https://meli.la/1NHEvFg"
-},
-
-{
-img:"assets/1000225811.jpg",
-alt:"Camiseta",
-cat:"Streetwear",
-name:"Camiseta",
-url:"https://meli.la/2LNiXpw"
-},
-
-{
-img:"assets/1000225810.jpg",
-alt:"Perfume",
-cat:"Perfumes",
-name:"Perfume",
-url:"https://meli.la/2RZq5c1"
-},
-
-{
-img:"assets/1000225809.jpg",
-alt:"Pulseira",
-cat:"Acessórios",
-name:"Pulseira",
-url:"https://meli.la/1SSYsUW"
-},
-
-{
-img:"assets/1000225808.jpg",
-alt:"Sandália Birken",
-cat:"Calçados",
-name:"Sandália Birken",
-url:"https://www.mercadolivre.com.br"
-},
-
-{
-img:"assets/1000225807.jpg",
-alt:"Suéter",
-cat:"Old Money",
-name:"Suéter",
-url:"https://meli.la/2zBfrCo"
-},
-
-{
-img:"assets/1000225806.jpg",
-alt:"Relógio Orient",
-cat:"Acessórios",
-name:"Relógio Orient",
-url:"https://meli.la/2jikb9T"
-},
-
-{
-img:"assets/1000225805.jpg",
-alt:"Óculos Ray-Ban",
-cat:"Acessórios",
-name:"Óculos Ray-Ban",
-url:"https://meli.la/2wRVUaq"
-},
-
-{
-img:"assets/1000225804.jpg",
-alt:"Boné",
-cat:"Streetwear",
-name:"Boné",
-url:"https://meli.la/1TM7n7o"
-}
-
-];
-
-
-let active="Todos";
-
-
-/* ==========================================
-   FILTROS
-========================================== */
-
-const cats=[
-    "Todos",
-    ...new Set(products.map(p=>p.cat))
-];
-
-const filters=document.getElementById("filters");
-
-
-cats.forEach(c=>{
-
-    let b=document.createElement("button");
-
-    b.textContent=c;
-
-    b.className=
-    "filter shrink-0 rounded-full border border-white/10 px-5 py-2.5 text-[10px] tracking-widest text-white/50 hover:text-white transition";
-
-    b.onclick=()=>{
-
-        active=c;
-
-        document
-        .querySelectorAll(".filter")
-        .forEach(x=>{
-            x.classList.remove(
-                "bg-white",
-                "text-black"
-            );
-        });
-
-        b.classList.add(
-            "bg-white",
-            "text-black"
-        );
-
-        render();
-
-    };
-
-    filters.appendChild(b);
-
-});
-
-
-filters.firstChild.classList.add(
-    "bg-white",
-    "text-black"
-);
-
-
-
-/* ==========================================
-   RENDER PRODUTOS
-========================================== */
-
-function render(){
-
-    const q=
-    document
-    .getElementById("search")
-    .value
-    .toLowerCase();
-
-
-    const list=
-    products.filter(p=>
-        (active==="Todos" || p.cat===active)
-        &&
-        (
-            !q
-            ||
-            p.name.toLowerCase().includes(q)
-            ||
-            p.cat.toLowerCase().includes(q)
-        )
-    );
-
-
-    const box=
-    document.getElementById("products");
-
-    box.innerHTML="";
-
-
-    document
-    .getElementById("empty")
-    .classList
-    .toggle(
-        "hidden",
-        list.length>0
-    );
-
-
-    list.forEach((p,i)=>{
-
-        const el=
-        document.createElement("article");
-
-
-        el.className=
-        "product-card reveal bg-[#0a0a0a] border border-white/[.07] rounded-2xl overflow-hidden";
-
-
-        el.innerHTML=`
-
-        <div
-        class="relative aspect-[4/5] bg-[#111] overflow-hidden">
-
-            <img
-            src="${p.img}"
-            onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=80'"
-            class="product-img w-full h-full object-cover"
-            alt="${p.alt}">
-
-
-            <span
-            class="absolute top-4 left-4 glass rounded-full px-3 py-1.5 text-[9px] tracking-widest gold">
-
-                ${p.cat}
-
-            </span>
-
-        </div>
-
-
-        <div class="p-5">
-
-            <div
-            class="flex items-start justify-between gap-3">
-
-                <h3 class="font-semibold">
-                    ${p.name}
-                </h3>
-
-
-                <span class="text-[9px] text-white/25">
-                    0${i+1}
-                </span>
+    <div id="progressBar"></div>
+    <div id="cursorGlow"></div>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header
+        id="header"
+        class="glass-header fixed top-0 left-0 w-full z-50"
+    >
+
+        <div class="max-w-7xl mx-auto px-5 h-20 flex items-center justify-between">
+
+            <a
+                href="#inicio"
+                class="logo font-bold text-white text-xl md:text-2xl"
+            >
+                MOVAJÁ<span class="text-gold">.</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-[10px] font-bold tracking-[.2em]">
+
+                <a href="#inicio" class="nav-link hover:text-gold transition">
+                    INÍCIO
+                </a>
+
+                <a href="#catalogo" class="nav-link hover:text-gold transition">
+                    CATÁLOGO
+                </a>
+
+                <a href="#oldmoney" class="nav-link hover:text-gold transition">
+                    OLD MONEY
+                </a>
+
+                <a href="#streetwear" class="nav-link hover:text-gold transition">
+                    STREETWEAR
+                </a>
+
+            </nav>
+
+            <div class="hidden md:flex items-center gap-3">
+
+                <button
+                    onclick="randomPick()"
+                    class="random-btn border border-gold/40 text-gold px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                >
+                    SURPREENDA-ME
+                </button>
+
+                <a
+                    href="#catalogo"
+                    class="bg-white text-black px-5 py-2.5 text-[9px] font-bold tracking-[.18em] hover:bg-gold hover:text-white transition"
+                >
+                    EXPLORAR
+                </a>
 
             </div>
 
+            <button
+                id="menuButton"
+                class="md:hidden text-white text-2xl"
+                onclick="toggleMobileMenu()"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
 
-            <p
-            class="text-xs text-white/35 mt-2">
+        </div>
 
-                Selecionado pela MOVAJÁ
+        <div id="mobileMenu" class="md:hidden border-t border-white/10">
 
-            </p>
+            <div class="px-5 py-5 flex flex-col gap-5 text-xs tracking-widest">
 
+                <a href="#inicio" onclick="toggleMobileMenu()">
+                    INÍCIO
+                </a>
 
-            <div
-            class="mt-5 flex gap-2">
+                <a href="#catalogo" onclick="toggleMobileMenu()">
+                    CATÁLOGO
+                </a>
+
+                <a href="#oldmoney" onclick="toggleMobileMenu()">
+                    OLD MONEY
+                </a>
+
+                <a href="#streetwear" onclick="toggleMobileMenu()">
+                    STREETWEAR
+                </a>
 
                 <button
-                class="details flex-1 border border-white/10 py-3 text-[9px] tracking-widest hover:bg-white/10 transition">
-
-                    DETALHES
-
+                    onclick="randomPick(); toggleMobileMenu();"
+                    class="text-left text-gold"
+                >
+                    SURPREENDA-ME
                 </button>
 
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         HERO
+    ========================================== -->
+
+    <section
+        id="inicio"
+        class="hero relative h-screen min-h-[680px] flex items-center justify-center overflow-hidden"
+    >
+
+        <img
+            src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=2000"
+            alt="Moda premium MOVAJÁ"
+            class="hero-image absolute inset-0 w-full h-full object-cover"
+        >
+
+        <div class="hero-overlay absolute inset-0 z-10"></div>
+
+        <div class="relative z-20 text-center px-5 max-w-5xl mx-auto">
+
+            <div class="reveal">
+
+                <span class="section-kicker block mb-6">
+                    Plataforma de Curadoria Premium
+                </span>
+
+                <h1
+                    class="hero-title serif text-6xl md:text-8xl lg:text-[9rem] leading-[.9] font-medium tracking-[-.04em]"
+                >
+                    SEU ESTILO.
+                    <br>
+                    <span class="text-gray-300 italic">
+                        SUA ERA.
+                    </span>
+                </h1>
+
+                <div class="gold-line"></div>
+
+                <p class="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed mb-10">
+                    Uma seleção de peças e acessórios escolhidos para quem
+                    transforma presença em identidade.
+                </p>
 
                 <a
-                href="${p.url}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 bg-white text-black py-3 text-center text-[9px] tracking-widest font-bold hover:bg-gold transition">
-
-                    COMPRAR ↗
-
+                    href="#catalogo"
+                    class="hero-button inline-flex bg-white text-black px-10 py-4 text-[10px] font-bold tracking-[.25em]"
+                >
+                    ACESSAR CATÁLOGO
                 </a>
 
             </div>
 
         </div>
 
-        `;
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20">
+
+            <div class="flex flex-col items-center gap-3 text-[8px] tracking-[.3em] text-gray-500">
+
+                <span>SCROLL</span>
+
+                <div class="w-px h-10 bg-gradient-to-b from-gold to-transparent"></div>
+
+            </div>
+
+        </div>
+
+    </section>
 
 
-        el
-        .querySelector(".details")
-        .onclick=()=>openModal(p);
+    <!-- =========================================
+         MANIFESTO
+    ========================================== -->
 
+    <section class="max-w-5xl mx-auto px-5 py-28 text-center reveal">
 
-        el.onmousemove=e=>
-        tilt(e,el);
+        <span class="section-kicker">
+            O conceito
+        </span>
 
-
-        el.onmouseleave=()=>{
-            el.style.transform=
-            "perspective(900px) rotateX(0) rotateY(0)";
-        };
-
-
-        box.appendChild(el);
-
-
-        setTimeout(
-            ()=>el.classList.add("show"),
-            i*45
-        );
-
-    });
-
-}
-
-
-
-/* ==========================================
-   EFEITO 3D
-========================================== */
-
-function tilt(e,el){
-
-    const r=
-    el.getBoundingClientRect();
-
-
-    const x=
-    (e.clientX-r.left)
-    /
-    r.width
-    -.5;
-
-
-    const y=
-    (e.clientY-r.top)
-    /
-    r.height
-    -.5;
-
-
-    el.style.transform=
-    `
-    perspective(900px)
-    rotateX(${-y*5}deg)
-    rotateY(${x*5}deg)
-    translateY(-4px)
-    `;
-
-}
-
-
-
-/* ==========================================
-   MODAL DO PRODUTO
-========================================== */
-
-function openModal(p){
-
-    const rel=
-    products
-    .filter(x=>
-        x.cat===p.cat &&
-        x!==p
-    )
-    .slice(0,3);
-
-
-    document
-    .getElementById("modalbox")
-    .innerHTML=`
-
-    <button
-    onclick="closeModal()"
-    class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full bg-black/60 text-white">
-
-        ×
-
-    </button>
-
-
-    <div class="grid md:grid-cols-2">
-
-
-        <img
-        src="${p.img}"
-        onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&q=80'"
-        class="w-full h-full min-h-[380px] object-cover"
-        alt="${p.alt}">
-
-
-        <div class="p-8 md:p-12">
-
-            <span
-            class="gold text-[9px] tracking-widest">
-
-                ${p.cat}
-
+        <h2 class="serif text-4xl md:text-6xl mt-5 leading-tight">
+            Não é apenas sobre vestir.
+            <br>
+            <span class="text-gray-500 italic">
+                É sobre ser lembrado.
             </span>
+        </h2>
+
+        <p class="text-gray-500 text-sm leading-7 max-w-2xl mx-auto mt-8">
+            A MOVAJÁ reúne peças de diferentes estilos para criar uma experiência
+            de descoberta. Do clássico Old Money ao Streetwear, cada escolha
+            representa uma maneira diferente de expressar quem você é.
+        </p>
+
+    </section>
 
 
-            <h2 class="text-4xl mt-3">
+    <!-- =========================================
+         CATÁLOGO
+    ========================================== -->
 
-                ${p.name}
+    <section
+        id="catalogo"
+        class="max-w-7xl mx-auto px-5 pb-32"
+    >
 
-            </h2>
+        <div class="border-b border-white/10 pb-7 mb-10">
+
+            <div class="flex flex-col lg:flex-row justify-between gap-8">
+
+                <div>
+
+                    <span class="section-kicker">
+                        Vitrine oficial
+                    </span>
+
+                    <h2 class="text-3xl md:text-5xl font-semibold mt-2">
+                        CATÁLOGO
+                    </h2>
+
+                    <p class="text-gray-500 text-sm mt-3">
+                        Produtos selecionados pela curadoria MOVAJÁ.
+                    </p>
+
+                </div>
+
+                <div class="flex items-end">
+
+                    <span
+                        id="productCount"
+                        class="text-xs text-gray-500"
+                    >
+                        14 produtos
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
 
 
-            <p
-            class="text-white/40 text-sm leading-7 mt-5">
+        <!-- BUSCA -->
 
-                Uma escolha da curadoria MOVAJÁ
-                para completar seu estilo.
-                Explore a peça na loja parceira
-                e confira preço, tamanhos
-                e disponibilidade.
+        <div class="search-box rounded-sm p-4 mb-6">
 
+            <div class="flex items-center gap-4">
+
+                <span class="text-gold text-lg">
+                    ⌕
+                </span>
+
+                <input
+                    id="searchInput"
+                    type="search"
+                    placeholder="Buscar produto, categoria..."
+                    class="bg-transparent w-full text-sm text-white placeholder-gray-600"
+                    oninput="renderProducts()"
+                >
+
+                <button
+                    onclick="clearSearch()"
+                    class="text-gray-600 hover:text-white transition text-xs"
+                >
+                    LIMPAR
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FILTROS -->
+
+        <div class="flex flex-wrap gap-2 mb-12">
+
+            <button
+                class="filter-btn active px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Todos"
+                onclick="setFilter('Todos')"
+            >
+                TODOS
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Roupas"
+                onclick="setFilter('Roupas')"
+            >
+                ROUPAS
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Old Money"
+                onclick="setFilter('Old Money')"
+            >
+                OLD MONEY
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Streetwear"
+                onclick="setFilter('Streetwear')"
+            >
+                STREETWEAR
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Acessórios"
+                onclick="setFilter('Acessórios')"
+            >
+                ACESSÓRIOS
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Calçados"
+                onclick="setFilter('Calçados')"
+            >
+                CALÇADOS
+            </button>
+
+            <button
+                class="filter-btn px-4 py-2 text-[9px] font-bold tracking-[.18em]"
+                data-filter="Perfumes"
+                onclick="setFilter('Perfumes')"
+            >
+                PERFUMES
+            </button>
+
+        </div>
+
+
+        <!-- PRODUTOS -->
+
+        <div
+            id="productGrid"
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        ></div>
+
+
+        <!-- SEM RESULTADOS -->
+
+        <div
+            id="noResults"
+            class="hidden py-24 text-center"
+        >
+
+            <div class="text-4xl mb-5">
+                ◌
+            </div>
+
+            <h3 class="text-xl font-semibold">
+                Nenhum produto encontrado
+            </h3>
+
+            <p class="text-gray-500 text-sm mt-2">
+                Tente pesquisar por outro termo.
             </p>
 
+            <button
+                onclick="clearSearch(); setFilter('Todos')"
+                class="mt-6 text-gold text-xs tracking-widest"
+            >
+                LIMPAR FILTROS
+            </button>
 
-            <a
-            href="${p.url}"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block mt-8 bg-white text-black text-center py-4 text-[10px] tracking-widest font-bold hover:bg-gold transition">
+        </div>
 
-                VER NA LOJA ↗
-
-            </a>
-
-
-            <div class="mt-10">
-
-                <p
-                class="text-[9px] tracking-widest text-white/30 mb-4">
-
-                    VOCÊ TAMBÉM PODE GOSTAR
-
-                </p>
+    </section>
 
 
-                <div class="flex gap-3">
+    <!-- =========================================
+         OLD MONEY
+    ========================================== -->
 
-                    ${rel.map(x=>`
+    <section
+        id="oldmoney"
+        class="border-y border-white/5 bg-[#080808] py-28"
+    >
+
+        <div class="max-w-7xl mx-auto px-5">
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <div class="reveal">
+
+                    <span class="section-kicker">
+                        Coleção
+                    </span>
+
+                    <h2 class="serif text-5xl md:text-7xl mt-4">
+                        OLD
+                        <br>
+                        <span class="italic text-gray-500">
+                            MONEY.
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-500 text-sm leading-7 max-w-md mt-7">
+                        Linhas clássicas, alfaiataria e detalhes discretos
+                        para uma estética atemporal.
+                    </p>
 
                     <button
-                    onclick='openModal(${JSON.stringify(x)})'
-                    class="text-left flex-1">
-
-                        <img
-                        src="${x.img}"
-                        onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&q=70'"
-                        class="aspect-square object-cover rounded-xl"
-                        alt="${x.alt}">
-
-
-                        <span
-                        class="block text-xs mt-2">
-
-                            ${x.name}
-
-                        </span>
-
+                        onclick="setFilter('Old Money'); document.getElementById('catalogo').scrollIntoView()"
+                        class="mt-8 border border-white/15 px-7 py-3 text-[9px] tracking-[.2em] hover:border-gold hover:text-gold transition"
+                    >
+                        EXPLORAR OLD MONEY
                     </button>
 
-                    `).join("")}
+                </div>
+
+                <div class="relative reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?q=80&w=1200"
+                        alt="Estilo Old Money"
+                        class="w-full h-[500px] object-cover opacity-70"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-transparent to-transparent"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         STREETWEAR
+    ========================================== -->
+
+    <section
+        id="streetwear"
+        class="py-28"
+    >
+
+        <div class="max-w-7xl mx-auto px-5">
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <div class="relative reveal md:order-1 order-2">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=1200"
+                        alt="Streetwear"
+                        class="w-full h-[500px] object-cover opacity-70"
+                    >
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+
+                </div>
+
+                <div class="reveal md:order-2 order-1">
+
+                    <span class="section-kicker">
+                        Coleção
+                    </span>
+
+                    <h2 class="serif text-5xl md:text-7xl mt-4">
+                        STREET
+                        <br>
+                        <span class="italic text-gray-500">
+                            WEAR.
+                        </span>
+                    </h2>
+
+                    <p class="text-gray-500 text-sm leading-7 max-w-md mt-7">
+                        Atitude, personalidade e peças que não passam despercebidas.
+                    </p>
+
+                    <button
+                        onclick="setFilter('Streetwear'); document.getElementById('catalogo').scrollIntoView()"
+                        class="mt-8 border border-white/15 px-7 py-3 text-[9px] tracking-[.2em] hover:border-gold hover:text-gold transition"
+                    >
+                        EXPLORAR STREETWEAR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         CTA FINAL
+    ========================================== -->
+
+    <section class="py-28 border-t border-white/5">
+
+        <div class="max-w-4xl mx-auto px-5 text-center reveal">
+
+            <span class="section-kicker">
+                MOVAJÁ
+            </span>
+
+            <h2 class="serif text-4xl md:text-6xl mt-5">
+                Seu próximo estilo
+                <br>
+                <span class="italic text-gray-500">
+                    começa aqui.
+                </span>
+            </h2>
+
+            <button
+                onclick="randomPick()"
+                class="random-btn mt-10 bg-gold text-black px-10 py-4 text-[10px] font-bold tracking-[.25em]"
+            >
+                ✦ SURPREENDA-ME
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="bg-[#030303] border-t border-white/10 py-16">
+
+        <div class="max-w-7xl mx-auto px-5">
+
+            <div class="grid md:grid-cols-3 gap-10">
+
+                <div>
+
+                    <p class="logo text-white font-bold text-xl">
+                        MOVAJÁ<span class="text-gold">.</span>
+                    </p>
+
+                    <p class="text-gray-600 text-xs leading-6 mt-4 max-w-xs">
+                        Plataforma independente de curadoria e descoberta
+                        de moda e acessórios.
+                    </p>
+
+                </div>
+
+                <div>
+
+                    <p class="text-white text-[10px] font-bold tracking-[.2em] mb-4">
+                        NAVEGAÇÃO
+                    </p>
+
+                    <div class="flex flex-col gap-3 text-xs text-gray-600">
+
+                        <a href="#inicio" class="hover:text-gold transition">
+                            Início
+                        </a>
+
+                        <a href="#catalogo" class="hover:text-gold transition">
+                            Catálogo
+                        </a>
+
+                        <a href="#oldmoney" class="hover:text-gold transition">
+                            Old Money
+                        </a>
+
+                        <a href="#streetwear" class="hover:text-gold transition">
+                            Streetwear
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <p class="text-white text-[10px] font-bold tracking-[.2em] mb-4">
+                        AVISO
+                    </p>
+
+                    <p class="text-gray-600 text-xs leading-6">
+                        A MOVAJÁ atua como vitrine digital de afiliados.
+                        As transações, pagamentos e entregas são processados
+                        pela plataforma parceira.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/5 mt-12 pt-7 flex flex-col md:flex-row justify-between gap-3 text-[9px] tracking-widest text-gray-700">
+
+                <span>
+                    © 2026 MOVAJÁ. TODOS OS DIREITOS RESERVADOS.
+                </span>
+
+                <span>
+                    CURADORIA • ESTILO • IDENTIDADE
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         MODAL
+    ========================================== -->
+
+    <div
+        id="modal"
+        class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-4"
+        onclick="closeModalOutside(event)"
+    >
+
+        <div
+            class="modal-content modal-scroll bg-[#090909] border border-white/10 max-w-5xl w-full max-h-[92vh] overflow-y-auto"
+        >
+
+            <div class="grid md:grid-cols-2">
+
+                <div class="relative bg-[#111] min-h-[400px]">
+
+                    <img
+                        id="modalImage"
+                        src=""
+                        alt=""
+                        class="w-full h-full min-h-[400px] object-cover"
+                    >
+
+                    <button
+                        onclick="closeModal()"
+                        class="absolute top-4 right-4 w-10 h-10 bg-black/70 backdrop-blur-md border border-white/10 rounded-full text-white hover:text-gold transition"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+                <div class="p-7 md:p-10">
+
+                    <span
+                        id="modalCategory"
+                        class="section-kicker"
+                    ></span>
+
+                    <h2
+                        id="modalTitle"
+                        class="serif text-4xl md:text-5xl mt-3"
+                    ></h2>
+
+                    <p class="text-gray-500 text-sm leading-7 mt-6">
+                        Produto selecionado pela curadoria MOVAJÁ.
+                        Consulte preço, disponibilidade, tamanhos e condições
+                        diretamente na loja parceira.
+                    </p>
+
+                    <div class="flex gap-3 mt-8">
+
+                        <a
+                            id="modalBuy"
+                            href="#"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex-1 bg-white text-black text-center py-4 text-[9px] font-bold tracking-[.2em] hover:bg-gold hover:text-white transition"
+                        >
+                            VER NA LOJA ↗
+                        </a>
+
+                        <button
+                            id="modalFavorite"
+                            onclick="toggleModalFavorite()"
+                            class="w-14 border border-white/10 text-xl hover:border-gold hover:text-gold transition"
+                        >
+                            ♡
+                        </button>
+
+                    </div>
+
+                    <div class="border-t border-white/10 mt-10 pt-8">
+
+                        <p class="text-[9px] font-bold tracking-[.2em] text-gray-500 mb-5">
+                            VOCÊ TAMBÉM PODE GOSTAR
+                        </p>
+
+                        <div
+                            id="relatedProducts"
+                            class="grid grid-cols-3 gap-3"
+                        ></div>
+
+                    </div>
 
                 </div>
 
@@ -1171,185 +1240,770 @@ function openModal(p){
 
     </div>
 
-    `;
+
+    <script>
+
+        /* =========================================
+           PRODUTOS ORIGINAIS DA MOVAJÁ
+        ========================================== */
+
+        const products = [
+
+            {
+                id: 1,
+                img: "assets/1000225819.jpg",
+                alt: "Short",
+                cat: "Roupas",
+                name: "Short",
+                url: "https://meli.la/131wUQ7"
+            },
+
+            {
+                id: 2,
+                img: "assets/1000225816.jpg",
+                alt: "Cinto",
+                cat: "Acessórios",
+                name: "Cinto",
+                url: "https://meli.la/2GQc29P"
+            },
+
+            {
+                id: 3,
+                img: "assets/1000225815.jpg",
+                alt: "Camisa Polo",
+                cat: "Roupas",
+                name: "Camisa Polo",
+                url: "https://meli.la/2QVNmiV"
+            },
+
+            {
+                id: 4,
+                img: "assets/1000225814.jpg",
+                alt: "Calça Alfaiataria",
+                cat: "Old Money",
+                name: "Calça Alfaiataria",
+                url: "https://meli.la/1pbruPw"
+            },
+
+            {
+                id: 5,
+                img: "assets/1000225813.jpg",
+                alt: "Cuecas",
+                cat: "Moda Íntima",
+                name: "Cuecas",
+                url: "https://meli.la/1WuZzrA"
+            },
+
+            {
+                id: 6,
+                img: "assets/1000225812.jpg",
+                alt: "Carteira",
+                cat: "Acessórios",
+                name: "Carteira",
+                url: "https://meli.la/1NHEvFg"
+            },
+
+            {
+                id: 7,
+                img: "assets/1000225811.jpg",
+                alt: "Camiseta",
+                cat: "Streetwear",
+                name: "Camiseta",
+                url: "https://meli.la/2LNiXpw"
+            },
+
+            {
+                id: 8,
+                img: "assets/1000225810.jpg",
+                alt: "Perfume",
+                cat: "Perfumes",
+                name: "Perfume",
+                url: "https://meli.la/2RZq5c1"
+            },
+
+            {
+                id: 9,
+                img: "assets/1000225809.jpg",
+                alt: "Pulseira",
+                cat: "Acessórios",
+                name: "Pulseira",
+                url: "https://meli.la/1SSYsUW"
+            },
+
+            {
+                id: 10,
+                img: "assets/1000225808.jpg",
+                alt: "Sandália Birken",
+                cat: "Calçados",
+                name: "Sandália Birken",
+                url: "https://www.mercadolivre.com.br"
+            },
+
+            {
+                id: 11,
+                img: "assets/1000225807.jpg",
+                alt: "Suéter",
+                cat: "Old Money",
+                name: "Suéter",
+                url: "https://meli.la/2zBfrCo"
+            },
+
+            {
+                id: 12,
+                img: "assets/1000225806.jpg",
+                alt: "Relógio Orient",
+                cat: "Acessórios",
+                name: "Relógio Orient",
+                url: "https://meli.la/2jikb9T"
+            },
+
+            {
+                id: 13,
+                img: "assets/1000225805.jpg",
+                alt: "Óculos Ray-Ban",
+                cat: "Acessórios",
+                name: "Óculos Ray-Ban",
+                url: "https://meli.la/2wRVUaq"
+            },
+
+            {
+                id: 14,
+                img: "assets/1000225804.jpg",
+                alt: "Boné",
+                cat: "Streetwear",
+                name: "Boné",
+                url: "https://meli.la/1TM7n7o"
+            }
+
+        ];
 
 
-    document
-    .getElementById("modal")
-    .classList
-    .remove("hidden");
+        let activeFilter = "Todos";
+        let currentProduct = null;
+
+        let favorites =
+            JSON.parse(localStorage.getItem("movajaFavorites") || "[]");
 
 
-    document
-    .getElementById("modal")
-    .classList
-    .add("flex");
+        /* =========================================
+           RENDER
+        ========================================== */
 
-}
+        function renderProducts() {
 
+            const grid = document.getElementById("productGrid");
+            const search =
+                document
+                    .getElementById("searchInput")
+                    .value
+                    .toLowerCase()
+                    .trim();
 
+            const filtered = products.filter(product => {
 
-/* ==========================================
-   FECHAR MODAL
-========================================== */
+                const matchesFilter =
+                    activeFilter === "Todos" ||
+                    product.cat === activeFilter;
 
-function closeModal(){
+                const matchesSearch =
+                    product.name.toLowerCase().includes(search) ||
+                    product.cat.toLowerCase().includes(search);
 
-    document
-    .getElementById("modal")
-    .classList
-    .add("hidden");
+                return matchesFilter && matchesSearch;
 
-
-    document
-    .getElementById("modal")
-    .classList
-    .remove("flex");
-
-}
-
-
-document
-.getElementById("modal")
-.onclick=e=>{
-
-    if(e.target.id==="modal"){
-        closeModal();
-    }
-
-};
+            });
 
 
-
-/* ==========================================
-   SURPREENDA-ME
-========================================== */
-
-function randomPick(){
-
-    const p=
-    products[
-        Math.floor(
-            Math.random()*products.length
-        )
-    ];
-
-    openModal(p);
-
-}
+            document.getElementById("productCount").textContent =
+                `${filtered.length} ${filtered.length === 1 ? "produto" : "produtos"}`;
 
 
+            if (!filtered.length) {
 
-/* ==========================================
-   ANIMAÇÃO AO ROLAR
-========================================== */
+                grid.innerHTML = "";
 
-const io=
-new IntersectionObserver(
-    es=>{
+                document
+                    .getElementById("noResults")
+                    .classList
+                    .remove("hidden");
 
-        es.forEach(e=>{
-
-            if(e.isIntersecting){
-
-                e.target.classList.add("show");
+                return;
 
             }
 
-        });
 
-    },
-    {
-        threshold:.12
-    }
-);
+            document
+                .getElementById("noResults")
+                .classList
+                .add("hidden");
 
 
-document
-.querySelectorAll(".reveal")
-.forEach(e=>io.observe(e));
+            grid.innerHTML = filtered.map((p, index) => {
+
+                const isFavorite =
+                    favorites.includes(p.id);
+
+                return `
+
+                    <article
+                        class="product-card reveal"
+                        data-id="${p.id}"
+                        onmousemove="tiltCard(event, this)"
+                        onmouseleave="resetCard(this)"
+                    >
+
+                        <div class="product-glow"></div>
+
+                        <div class="product-image-wrapper aspect-[4/5]">
+
+                            <img
+                                src="${p.img}"
+                                alt="${p.alt}"
+                                class="product-image w-full h-full object-cover"
+                                loading="${index < 4 ? "eager" : "lazy"}"
+                                onerror="imageFallback(this)"
+                            >
+
+                            <span class="category-pill">
+                                ${p.cat}
+                            </span>
+
+                            <button
+                                class="favorite-btn ${isFavorite ? "active" : ""}"
+                                onclick="toggleFavorite(event, ${p.id})"
+                                aria-label="Favoritar ${p.name}"
+                            >
+                                ${isFavorite ? "♥" : "♡"}
+                            </button>
+
+                        </div>
 
 
+                        <div class="product-info p-5">
 
-/* ==========================================
-   BARRA DE PROGRESSO
-========================================== */
+                            <div class="flex items-start justify-between gap-3">
 
-window.addEventListener(
-    "scroll",
-    ()=>{
+                                <div>
 
-        const progress=
-        scrollY
-        /
-        (
-            document.documentElement.scrollHeight
-            -
-            innerHeight
-        )
-        *
-        100;
+                                    <h3 class="font-semibold text-base">
+                                        ${p.name}
+                                    </h3>
 
+                                    <p class="text-[10px] text-gray-600 mt-1 tracking-wide">
+                                        Selecionado pela MOVAJÁ
+                                    </p>
 
-        document
-        .getElementById("progress")
-        .style.width=
-        progress+"%";
+                                </div>
+
+                                <span class="text-gold text-xs">
+                                    ✦
+                                </span>
+
+                            </div>
 
 
-        document
-        .getElementById("nav")
-        .classList
-        .toggle(
-            "bg-black/75",
-            scrollY>30
+                            <div class="grid grid-cols-[1fr_auto] gap-2 mt-5">
+
+                                <button
+                                    onclick="openModal(${p.id})"
+                                    class="details-button py-3 text-[9px] font-bold tracking-[.16em]"
+                                >
+                                    DETALHES
+                                </button>
+
+                                <a
+                                    href="${p.url}"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="product-action bg-white text-black px-4 py-3 text-[9px] font-bold tracking-[.16em] text-center"
+                                >
+                                    COMPRAR ↗
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                `;
+
+            }).join("");
+
+
+            setTimeout(() => {
+
+                document
+                    .querySelectorAll(".reveal")
+                    .forEach(el => observer.observe(el));
+
+            }, 50);
+
+        }
+
+
+        /* =========================================
+           FALLBACK DE IMAGEM
+        ========================================== */
+
+        function imageFallback(img) {
+
+            img.onerror = null;
+
+            img.src =
+                "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80";
+
+        }
+
+
+        /* =========================================
+           FILTROS
+        ========================================== */
+
+        function setFilter(filter) {
+
+            activeFilter = filter;
+
+            document
+                .querySelectorAll(".filter-btn")
+                .forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.filter === filter
+                    );
+
+                });
+
+            renderProducts();
+
+        }
+
+
+        function clearSearch() {
+
+            document.getElementById("searchInput").value = "";
+
+            renderProducts();
+
+        }
+
+
+        /* =========================================
+           3D CARD
+        ========================================== */
+
+        function tiltCard(event, card) {
+
+            if (window.innerWidth < 768) return;
+
+            const rect = card.getBoundingClientRect();
+
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+            const rotateX =
+                ((y - centerY) / centerY) * -4;
+
+            const rotateY =
+                ((x - centerX) / centerX) * 4;
+
+            card.style.transform =
+                `perspective(1200px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
+
+
+            const glow =
+                card.querySelector(".product-glow");
+
+            if (glow) {
+
+                glow.style.left = `${x}px`;
+                glow.style.top = `${y}px`;
+
+            }
+
+        }
+
+
+        function resetCard(card) {
+
+            card.style.transform = "";
+
+        }
+
+
+        /* =========================================
+           FAVORITOS
+        ========================================== */
+
+        function toggleFavorite(event, id) {
+
+            event.stopPropagation();
+
+            if (favorites.includes(id)) {
+
+                favorites =
+                    favorites.filter(item => item !== id);
+
+            } else {
+
+                favorites.push(id);
+
+            }
+
+            localStorage.setItem(
+                "movajaFavorites",
+                JSON.stringify(favorites)
+            );
+
+            renderProducts();
+
+        }
+
+
+        function toggleModalFavorite() {
+
+            if (!currentProduct) return;
+
+            const id = currentProduct.id;
+
+            if (favorites.includes(id)) {
+
+                favorites =
+                    favorites.filter(item => item !== id);
+
+            } else {
+
+                favorites.push(id);
+
+            }
+
+            localStorage.setItem(
+                "movajaFavorites",
+                JSON.stringify(favorites)
+            );
+
+            updateModalFavorite();
+
+            renderProducts();
+
+        }
+
+
+        function updateModalFavorite() {
+
+            const button =
+                document.getElementById("modalFavorite");
+
+            if (!currentProduct) return;
+
+            const active =
+                favorites.includes(currentProduct.id);
+
+            button.textContent =
+                active ? "♥" : "♡";
+
+            button.classList.toggle(
+                "text-gold",
+                active
+            );
+
+        }
+
+
+        /* =========================================
+           MODAL
+        ========================================== */
+
+        function openModal(id) {
+
+            const product =
+                products.find(p => p.id === id);
+
+            if (!product) return;
+
+            currentProduct = product;
+
+            document.getElementById("modalImage").src =
+                product.img;
+
+            document.getElementById("modalImage").alt =
+                product.alt;
+
+            document.getElementById("modalCategory").textContent =
+                product.cat;
+
+            document.getElementById("modalTitle").textContent =
+                product.name;
+
+            document.getElementById("modalBuy").href =
+                product.url;
+
+
+            const related =
+                products
+                    .filter(p =>
+                        p.id !== product.id &&
+                        p.cat === product.cat
+                    )
+                    .slice(0, 3);
+
+
+            document.getElementById("relatedProducts").innerHTML =
+
+                related.length
+
+                    ? related.map(p => `
+
+                        <button
+                            onclick="openModal(${p.id})"
+                            class="group text-left"
+                        >
+
+                            <div class="aspect-square overflow-hidden bg-[#111]">
+
+                                <img
+                                    src="${p.img}"
+                                    alt="${p.alt}"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                    onerror="imageFallback(this)"
+                                >
+
+                            </div>
+
+                            <p class="text-[9px] text-gray-500 mt-2">
+                                ${p.name}
+                            </p>
+
+                        </button>
+
+                    `).join("")
+
+                    : `
+
+                        <p class="text-gray-600 text-xs col-span-3">
+                            Explore outros produtos no catálogo.
+                        </p>
+
+                    `;
+
+
+            updateModalFavorite();
+
+            document
+                .getElementById("modal")
+                .classList
+                .add("open");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        function closeModal() {
+
+            document
+                .getElementById("modal")
+                .classList
+                .remove("open");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        function closeModalOutside(event) {
+
+            if (event.target.id === "modal") {
+                closeModal();
+            }
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+
+            }
         );
 
-    }
-);
+
+        /* =========================================
+           SURPREENDA-ME
+        ========================================== */
+
+        function randomPick() {
+
+            const randomIndex =
+                Math.floor(Math.random() * products.length);
+
+            openModal(products[randomIndex].id);
+
+        }
 
 
+        /* =========================================
+           MOBILE MENU
+        ========================================== */
 
-/* ==========================================
-   CURSOR
-========================================== */
+        function toggleMobileMenu() {
 
-const dot=
-document.getElementById("dot");
+            document
+                .getElementById("mobileMenu")
+                .classList
+                .toggle("open");
 
-const ring=
-document.getElementById("ring");
-
-
-window.addEventListener(
-    "mousemove",
-    e=>{
-
-        dot.style.left=
-        e.clientX+"px";
-
-        dot.style.top=
-        e.clientY+"px";
+        }
 
 
-        ring.style.left=
-        e.clientX+"px";
+        /* =========================================
+           SCROLL REVEAL
+        ========================================== */
 
-        ring.style.top=
-        e.clientY+"px";
+        const observer =
+            new IntersectionObserver(
+                entries => {
 
-    }
-);
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("show");
+
+                            observer.unobserve(entry.target);
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: .08
+                }
+            );
 
 
+        document
+            .querySelectorAll(".reveal")
+            .forEach(el => observer.observe(el));
 
-/* ==========================================
-   INICIALIZAÇÃO
-========================================== */
 
-render();
+        /* =========================================
+           HEADER + PROGRESS
+        ========================================== */
 
-</script>
+        const header =
+            document.getElementById("header");
+
+        const progress =
+            document.getElementById("progressBar");
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (window.scrollY > 40) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+
+
+                const scrollTop =
+                    window.scrollY;
+
+                const documentHeight =
+                    document.documentElement.scrollHeight -
+                    window.innerHeight;
+
+                const percentage =
+                    documentHeight > 0
+                        ? (scrollTop / documentHeight) * 100
+                        : 0;
+
+                progress.style.width =
+                    `${percentage}%`;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+
+        /* =========================================
+           CURSOR GLOW
+        ========================================== */
+
+        const cursorGlow =
+            document.getElementById("cursorGlow");
+
+
+        document.addEventListener(
+            "mousemove",
+            event => {
+
+                if (window.innerWidth < 768) return;
+
+                cursorGlow.style.left =
+                    `${event.clientX}px`;
+
+                cursorGlow.style.top =
+                    `${event.clientY}px`;
+
+            }
+        );
+
+
+        /* =========================================
+           ESCONDER CURSOR EM MOBILE
+        ========================================== */
+
+        function mobileCheck() {
+
+            if (window.innerWidth <= 768) {
+
+                document.body.style.cursor = "auto";
+
+            }
+
+        }
+
+
+        /* =========================================
+           INICIALIZAÇÃO
+        ========================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                renderProducts();
+
+                mobileCheck();
+
+            }
+        );
+
+    </script>
 
 </body>
-  </html>
+                    </html>
