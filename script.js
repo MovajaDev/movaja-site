@@ -1,137 +1,127 @@
-// CATÁLOGO COMPLETO MOVAJÁ - 27 PRODUTOS CADASTRADOS
-// Categorias: 'carteiras', 'sapatos', 'camisas', 'calcas', 'shorts', 'relogios', 'oculos', 'pulseiras', 'bones', 'perfumes'
-
-const products = [
-  // --- CARTEIRAS & PORTA-CARTÕES ---
-  { id: 1, title: "Carteira Masculina Monograma Premium", category: "carteiras", style: "Old Money", price: "R$ 653,18", badge: "Destaque", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1LkzWtw" },
-  { id: 2, title: "Porta-Cartões Slim Canvas Monograma", category: "carteiras", style: "Old Money", price: "R$ 653,18", badge: "Mais Vendido", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2Xidkos" },
-  { id: 3, title: "Carteira Masculina Slim Monograma Dark", category: "carteiras", style: "Old Money", price: "R$ 671,62", badge: "Elegante", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1BnCxWx" },
-  { id: 4, title: "Porta-Cartões Minimalista Couro Texturizado", category: "carteiras", style: "Old Money", price: "R$ 505,21", badge: "Minimalista", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1QKV5Pn" },
-  { id: 5, title: "Porta-Cartões Slim Monograma Dark Grey", category: "carteiras", style: "Old Money", price: "R$ 587,32", badge: "Premium", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2yAZSTy" },
-  { id: 6, title: "Carteira Masculina Monograma Classic Beige", category: "carteiras", style: "Old Money", price: "R$ 671,62", badge: "Clássico", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/31G5uD3" },
-  { id: 7, title: "Porta-Passaporte & Documentos Monograma Grey", category: "carteiras", style: "Old Money", price: "R$ 653,18", badge: "Viagem", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/23VzM2C" },
-  { id: 8, title: "Porta-Cartões Slim Canvas White Monograma", category: "carteiras", style: "Old Money", price: "R$ 616,13", badge: "Novidade", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1AVTsCF" },
-  { id: 9, title: "Carteira Masculina Print Winter Monograma White", category: "carteiras", style: "Old Money / Resort", price: "R$ 734,71", badge: "Edição Especial", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2asDqDC" },
-  { id: 10, title: "Carteira Compacta Jacquard Monograma Grey", category: "carteiras", style: "Old Money", price: "R$ 616,13", badge: "Sofisticado", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2rWhBTk" },
-  { id: 11, title: "Porta-Passaporte Couro Monograma Beige", category: "carteiras", style: "Resort / Old Money", price: "R$ 690,17", badge: "Resort", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1yBXA4v" },
-  { id: 12, title: "Porta-Cartões Vertical Monograma Dark & Green", category: "carteiras", style: "Old Money", price: "R$ 542,20", badge: "Moderno", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2KWKGE3" },
-  { id: 13, title: "Carteira Masculina Monograma Animals Print", category: "carteiras", style: "Old Money", price: "R$ 616,13", badge: "Edição Especial", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2Q7p3NS" },
-  { id: 14, title: "Carteira Masculina Monograma Beige & Cream", category: "carteiras", style: "Resort / Old Money", price: "R$ 616,13", badge: "Verão", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2RFc4fj" },
-  { id: 15, title: "Carteira Feminina Compacta Monograma Peach Pink", category: "carteiras", style: "Resort", price: "R$ 727,16", badge: "Exclusivo", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2PYJHur" },
-  { id: 16, title: "Carteira Masculina Monograma Ocean Blue Print", category: "carteiras", style: "Resort", price: "R$ 616,13", badge: "Edição de Verão", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/31Xbsc2" },
-  { id: 17, title: "Porta-Passaporte Monograma Coral Orange", category: "carteiras", style: "Resort", price: "R$ 616,13", badge: "Vibrante", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2mvsNxb" },
-  { id: 18, title: "Porta-Cartões Slim Vertical Monograma Navy Blue", category: "carteiras", style: "Old Money", price: "R$ 505,21", badge: "Elegante", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1sAqw5s" },
-  { id: 19, title: "Porta-Passaporte Monograma Royal Blue Animals Print", category: "carteiras", style: "Old Money / Resort", price: "R$ 616,13", badge: "Edição Especial", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1sQbcA9" },
-  { id: 20, title: "Carteira Masculina Slim Damier Graphite", category: "carteiras", style: "Old Money", price: "R$ 542,20", badge: "Mais Vendido", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/2N71MLq" },
-  { id: 21, title: "Carteira Masculina Slim Damier Ebene", category: "carteiras", style: "Old Money", price: "R$ 542,20", badge: "Clássico", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1PEoiEW" },
-  { id: 22, title: "Carteira Masculina Slim Monograma Classic Brown", category: "carteiras", style: "Old Money", price: "R$ 468,22", badge: "Oportunidade", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/34e1zkU" },
-  { id: 23, title: "Porta-Cartões Slim Canvas Monograma Beige & Gold Chains", category: "carteiras", style: "Old Money", price: "R$ 542,20", badge: "Elegante", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1t9MNZF" },
-  { id: 24, title: "Porta-Cartões Vertical Couro Texturizado Black", category: "carteiras", style: "Old Money", price: "R$ 616,13", badge: "Minimalista", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1AoFtJb" },
-  { id: 25, title: "Carteira Masculina Couro Texturizado Blue Mat", category: "carteiras", style: "Old Money", price: "R$ 727,16", badge: "Premium", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/1on4q8i" },
-  { id: 26, title: "Carteira Masculina Couro Texturizado Black Gold Logo", category: "carteiras", style: "Old Money", price: "R$ 708,61", badge: "Premium", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/15YHxDQ" },
-  { id: 27, title: "Carteira Masculina Couro Epi Black Minimalist", category: "carteiras", style: "Old Money", price: "R$ 505,21", badge: "Minimalista", image: "https://http2.mlstatic.com/D_NQ_NP_2X_721865-CBR81057424268_122024-F.webp", platform: "Mercado Livre", link: "https://meli.la/322qZTS" }
+// BANCO DE DADOS OFICIAL DOS 14 PRODUTOS COM LINKS DE AFILIADOS EXATOS
+const databaseProducts = [
+    { id: 1, name: "Short Alfaiataria", category: "Roupas Masculinas", image: "assets/1000225819.jpg", link: "https://meli.la/131wUQ7", desc: "Short casual de alta qualidade com cordão em algodão premium e caimento impecável." },
+    { id: 2, name: "Cinto Couro Premium", category: "Acessórios", image: "assets/1000225816.jpg", link: "https://meli.la/2GQc29P", desc: "Cinto em couro legítimo com fivela metálica escovada e acabamento de alfaiataria." },
+    { id: 3, name: "Camisa Polo Classic", category: "Roupas Masculinas", image: "assets/1000225815.jpg", link: "https://meli.la/2QVNmiV", desc: "Polo clássica com emblema bordado, toque macio e alta durabilidade térmica." },
+    { id: 4, name: "Calça Alfaiataria Slim", category: "Old Money", image: "assets/1000225814.jpg", link: "https://meli.la/1pbruPw", desc: "Alfaiataria impecável com modelagem slim e regulagem discreta na cintura." },
+    { id: 5, name: "Kit Cuecas Low Rise", category: "Moda Íntima", image: "assets/1000225813.jpg", link: "https://meli.la/1WuZzrA", desc: "Modelagem anatômica exclusiva com cós elástico metalizado de alto padrão." },
+    { id: 6, name: "Carteira Executiva", category: "Acessórios", image: "assets/1000225812.jpg", link: "https://meli.la/1NHEvFg", desc: "Carteira compacta em couro nobre com compartimentos inteligentes e logo discreto." },
+    { id: 7, name: "Camiseta Urban Fit", category: "Streetwear", image: "assets/1000225811.jpg", link: "https://meli.la/2LNiXpw", desc: "Camiseta algodão egípcio com caimento estruturado e gola reforçada." },
+    { id: 8, name: "Perfume Designer Luxury", category: "Perfumes", image: "assets/1000225810.jpg", link: "https://meli.la/2RZq5c1", desc: "Fragrância marcante e moderna, desenvolvida para alta fixação e presença." },
+    { id: 9, name: "Pulseira Detalhe Ouro", category: "Acessórios", image: "assets/1000225809.jpg", link: "https://meli.la/1SSYsUW", desc: "Acessório náutico com fecho em liga metálica banhada a ouro discreto." },
+    { id: 10, name: "Sandália Couro Confort", category: "Calçados", image: "assets/1000225808.jpg", link: "https://meli.la/2zBfrCo", desc: "Sandália em camurça genuína com fivelas ajustáveis e sola anatômica." },
+    { id: 11, name: "Suéter Zíper High-End", category: "Old Money", image: "assets/1000225807.jpg", link: "https://meli.la/2zBfrCo", desc: "Suéter canelado com gola alta e zíper metálico frontal. Sofisticação pura." },
+    { id: 12, name: "Relógio Diver Classic", category: "Acessórios", image: "assets/1000225806.jpg", link: "https://meli.la/2jikb9T", desc: "Relógio masculino robusto estilo diver com mostrador azul profundo e bisel contrastante." },
+    { id: 13, name: "Óculos Solar Metal", category: "Acessórios", image: "assets/1000225805.jpg", link: "https://meli.la/2wRVUaq", desc: "Armação metálica geométrica com lentes de alta proteção UV e design contemporâneo." },
+    { id: 14, name: "Boné Signature Street", category: "Streetwear", image: "assets/1000225804.jpg", link: "https://meli.la/1TM7n7o", desc: "Boné estruturado em sarja com bordado frontal exclusivo e regulagem traseira." }
 ];
 
-// RENDERIZAÇÃO DOS PRODUTOS
-function renderProducts(categoryFilter = 'all') {
-  const grid = document.getElementById('product-grid');
-  if (!grid) return;
+// RENDERIZAÇÃO DOS PRODUTOS NO DOM
+function renderProducts(filter = 'todos') {
+    const grid = document.getElementById('product-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
 
-  grid.innerHTML = '';
+    const filtered = filter === 'todos' 
+        ? databaseProducts 
+        : databaseProducts.filter(p => p.category.toLowerCase().includes(filter.toLowerCase()) || filter.toLowerCase().includes(p.category.toLowerCase()));
 
-  const filtered = categoryFilter === 'all' 
-    ? products 
-    : products.filter(p => p.category === categoryFilter);
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; color: #8a8a9e;">
-      <h3>Em breve novidades nesta secção!</h3>
-      <p style="margin-top:0.5rem; font-size:0.9rem;">Estamos a preparar a seleção das melhores peças desta categoria.</p>
-    </div>`;
-    return;
-  }
-
-  filtered.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <div class="product-badge">${product.badge}</div>
-      <div class="product-image">
-        <img src="${product.image}" alt="${product.title}" loading="lazy">
-      </div>
-      <div class="product-info">
-        <span class="product-style">${product.style} • ${product.platform}</span>
-        <h3 class="product-title">${product.title}</h3>
-        <div class="product-footer">
-          <span class="product-price">${product.price}</span>
-          <a href="${product.link}" target="_blank" rel="noopener noreferrer" class="buy-button">
-            Ver Oferta
-          </a>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-// CANVAS DE FUNDO 3D
-function init3DBackground() {
-  const canvas = document.getElementById('bg-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  let width = canvas.width = window.innerWidth;
-  let height = canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
-    width = canvas.width = window.innerWidth;
-    height = canvas.height = window.innerHeight;
-  });
-
-  const particles = Array.from({ length: 35 }, () => ({
-    x: Math.random() * width,
-    y: Math.random() * height,
-    radius: Math.random() * 2 + 0.5,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    alpha: Math.random() * 0.5 + 0.2
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(212, 175, 55, ${p.alpha})`;
-      ctx.fill();
+    filtered.forEach((p) => {
+        grid.innerHTML += `
+            <div class="card-3d-wrapper">
+                <div class="card-3d-container glass-panel overflow-hidden rounded-none flex flex-col justify-between h-full border border-white/10 group">
+                    <div class="h-80 overflow-hidden bg-black relative">
+                        <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-out" onerror="this.src='https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&q=80&w=800'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-amber-400 border border-amber-400/30 px-3 py-1 font-bold">
+                            ${p.category}
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="cinzel text-xl font-bold mb-2 text-white group-hover:text-amber-400 transition duration-300">${p.name}</h3>
+                            <p class="text-zinc-400 text-xs font-light mb-6 line-clamp-2 leading-relaxed">${p.desc}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                            <span class="text-[10px] text-zinc-500 uppercase tracking-widest">Mercado Livre</span>
+                            <a href="${p.link}" target="_blank" class="bg-white text-black text-xs font-extrabold uppercase tracking-[0.2em] px-5 py-3 hover:bg-amber-400 transition duration-300 shadow-md">
+                                Comprar Agora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     });
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
 }
 
+function filterProducts(category) {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+        btn.classList.add('border-white/10', 'bg-white/5', 'text-zinc-300');
+    });
+    event.target.classList.add('border-amber-400', 'bg-amber-400', 'text-black', 'font-bold');
+    event.target.classList.remove('border-white/10', 'bg-white/5', 'text-zinc-300');
+    renderProducts(category);
+}
+
+// CANVAS PARTICLES ENGINE
+const canvas = document.getElementById('cinematic-canvas');
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 40; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 1.5,
+            speedX: (Math.random() - 0.5) * 0.3,
+            speedY: (Math.random() - 0.5) * 0.3,
+            opacity: Math.random() * 0.5 + 0.1
+        });
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            if (p.x < 0) p.x = canvas.width;
+            if (p.x > canvas.width) p.x = 0;
+            if (p.y < 0) p.y = canvas.height;
+            if (p.y > canvas.height) p.y = 0;
+
+            ctx.fillStyle = `rgba(212, 175, 55, ${p.opacity})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+}
+
+// CUSTOM MOUSE FOLLOWER
+const cursor = document.getElementById('custom-cursor');
+if (cursor) {
+    window.addEventListener('mousemove', e => {
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+    });
+}
+
+// INIT LOAD
 document.addEventListener('DOMContentLoaded', () => {
-  init3DBackground();
-  renderProducts();
-
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      renderProducts(e.target.getAttribute('data-category'));
-    });
-  });
+    renderProducts();
+    if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+    }
 });
- 
