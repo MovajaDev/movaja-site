@@ -1,19 +1,17 @@
-// BANCO DE DADOS OFICIAL DOS 14 PRODUTOS COM LINKS DE AFILIADOS EXATOS
+// BANCO DE DADOS OFICIAL MAPEADO COM AS SUAS CAPTURAS DE ECRÃ DO GITHUB
 const databaseProducts = [
-    { id: 1, name: "Short Alfaiataria", category: "Roupas Masculinas", image: "assets/1000225819.jpg", link: "https://meli.la/131wUQ7", desc: "Short casual de alta qualidade com cordão em algodão premium e caimento impecável." },
-    { id: 2, name: "Cinto Couro Premium", category: "Acessórios", image: "assets/1000225816.jpg", link: "https://meli.la/2GQc29P", desc: "Cinto em couro legítimo com fivela metálica escovada e acabamento de alfaiataria." },
-    { id: 3, name: "Camisa Polo Classic", category: "Roupas Masculinas", image: "assets/1000225815.jpg", link: "https://meli.la/2QVNmiV", desc: "Polo clássica com emblema bordado, toque macio e alta durabilidade térmica." },
-    { id: 4, name: "Calça Alfaiataria Slim", category: "Old Money", image: "assets/1000225814.jpg", link: "https://meli.la/1pbruPw", desc: "Alfaiataria impecável com modelagem slim e regulagem discreta na cintura." },
-    { id: 5, name: "Kit Cuecas Low Rise", category: "Moda Íntima", image: "assets/1000225813.jpg", link: "https://meli.la/1WuZzrA", desc: "Modelagem anatômica exclusiva com cós elástico metalizado de alto padrão." },
-    { id: 6, name: "Carteira Executiva", category: "Acessórios", image: "assets/1000225812.jpg", link: "https://meli.la/1NHEvFg", desc: "Carteira compacta em couro nobre com compartimentos inteligentes e logo discreto." },
-    { id: 7, name: "Camiseta Urban Fit", category: "Streetwear", image: "assets/1000225811.jpg", link: "https://meli.la/2LNiXpw", desc: "Camiseta algodão egípcio com caimento estruturado e gola reforçada." },
-    { id: 8, name: "Perfume Designer Luxury", category: "Perfumes", image: "assets/1000225810.jpg", link: "https://meli.la/2RZq5c1", desc: "Fragrância marcante e moderna, desenvolvida para alta fixação e presença." },
-    { id: 9, name: "Pulseira Detalhe Ouro", category: "Acessórios", image: "assets/1000225809.jpg", link: "https://meli.la/1SSYsUW", desc: "Acessório náutico com fecho em liga metálica banhada a ouro discreto." },
-    { id: 10, name: "Sandália Couro Confort", category: "Calçados", image: "assets/1000225808.jpg", link: "https://meli.la/2zBfrCo", desc: "Sandália em camurça genuína com fivelas ajustáveis e sola anatômica." },
-    { id: 11, name: "Suéter Zíper High-End", category: "Old Money", image: "assets/1000225807.jpg", link: "https://meli.la/2zBfrCo", desc: "Suéter canelado com gola alta e zíper metálico frontal. Sofisticação pura." },
-    { id: 12, name: "Relógio Diver Classic", category: "Acessórios", image: "assets/1000225806.jpg", link: "https://meli.la/2jikb9T", desc: "Relógio masculino robusto estilo diver com mostrador azul profundo e bisel contrastante." },
-    { id: 13, name: "Óculos Solar Metal", category: "Acessórios", image: "assets/1000225805.jpg", link: "https://meli.la/2wRVUaq", desc: "Armação metálica geométrica com lentes de alta proteção UV e design contemporâneo." },
-    { id: 14, name: "Boné Signature Street", category: "Streetwear", image: "assets/1000225804.jpg", link: "https://meli.la/1TM7n7o", desc: "Boné estruturado em sarja com bordado frontal exclusivo e regulagem traseira." }
+    { id: 1, name: "Short Alfaiataria", category: "Roupas Masculinas", image: "assets/Screenshot_20261002_124841_.jpg", link: "https://meli.la/131wUQ7", desc: "Short casual de alta qualidade com cordão em algodão premium e caimento impecável." },
+    { id: 2, name: "Cinto Couro Premium", category: "Acessórios", image: "assets/Screenshot_20261002_124906_.jpg", link: "https://meli.la/2GQc29P", desc: "Cinto em couro legítimo com fivela metálica escovada e acabamento de alfaiataria." },
+    { id: 3, name: "Camisa Polo Classic", category: "Roupas Masculinas", image: "assets/Screenshot_20261002_124937_.jpg", link: "https://meli.la/2QVNmiV", desc: "Polo clássica com emblema bordado, toque macio e alta durabilidade térmica." },
+    { id: 4, name: "Calça Alfaiataria Slim", category: "Old Money", image: "assets/Screenshot_20261002_125004_.jpg", link: "https://meli.la/1pbruPw", desc: "Alfaiataria impecável com modelagem slim e regulagem discreta na cintura." },
+    { id: 5, name: "Kit Cuecas Low Rise", category: "Moda Íntima", image: "assets/Screenshot_20261002_125029_.jpg", link: "https://meli.la/1WuZzrA", desc: "Modelagem anatômica exclusiva com cós elástico metalizado de alto padrão." },
+    { id: 6, name: "Carteira Executiva", category: "Acessórios", image: "assets/Screenshot_20261002_125049_.jpg", link: "https://meli.la/1NHEvFg", desc: "Carteira compacta em couro nobre com compartimentos inteligentes e logo discreto." },
+    { id: 7, name: "Camiseta Urban Fit", category: "Streetwear", image: "assets/Screenshot_20261002_125121_.jpg", link: "https://meli.la/2LNiXpw", desc: "Camiseta algodão egípcio com caimento estruturado e gola reforçada." },
+    { id: 8, name: "Perfume Designer Luxury", category: "Perfumes", image: "assets/Screenshot_20261002_125143_.jpg", link: "https://meli.la/2RZq5c1", desc: "Fragrância marcante e moderna, desenvolvida para alta fixação e presença." },
+    { id: 9, name: "Pulseira Detalhe Ouro", category: "Acessórios", image: "assets/Screenshot_20261002_125207_.jpg", link: "https://meli.la/1SSYsUW", desc: "Acessório náutico com fecho em liga metálica banhada a ouro discreto." },
+    { id: 10, name: "Sandália Couro Confort", category: "Calçados", image: "assets/Screenshot_20261002_125234_.jpg", link: "https://meli.la/2zBfrCo", desc: "Sandália em camurça genuína com fivelas ajustáveis e sola anatômica." },
+    { id: 11, name: "Suéter Zíper High-End", category: "Old Money", image: "assets/Screenshot_20261002_125310_.jpg", link: "https://meli.la/2zBfrCo", desc: "Suéter canelado com gola alta e zíper metálico frontal. Sofisticação pura." },
+    { id: 12, name: "Relógio Diver Classic", category: "Acessórios", image: "assets/Screenshot_20261002_125345_.jpg", link: "https://meli.la/2jikb9T", desc: "Relógio masculino robusto estilo diver com mostrador azul profundo e bisel contrastante." }
 ];
 
 // RENDERIZAÇÃO DOS PRODUTOS NO DOM
