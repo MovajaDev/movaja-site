@@ -1,67 +1,1355 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MOVAJÁ | Curadoria de Moda & Acessórios Premium</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>MOVAJÁ — Vista o seu momento.</title>
+
+<meta name="description"
+content="MOVAJÁ — curadoria de moda, acessórios e estilo. Descubra peças que combinam com você.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config={
+    theme:{
+        extend:{
+            colors:{
+                ink:'#070707',
+                gold:'#d6b25e'
+            },
+            fontFamily:{
+                sans:['Plus Jakarta Sans','sans-serif']
+            }
+        }
+    }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --gold:#d6b25e;
+    --bg:#050505;
+    --muted:#969696;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:#fff;
+    font-family:'DM Sans',sans-serif;
+    overflow-x:hidden;
+}
+
+::selection{
+    background:var(--gold);
+    color:#000;
+}
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050505;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#2b2b2b;
+    border-radius:99px;
+}
+
+.serif{
+    font-family:'Playfair Display',serif;
+}
+
+.gold{
+    color:var(--gold);
+}
+
+.hero-bg{
+    background:
+    radial-gradient(
+        circle at 50% 35%,
+        #252017 0,
+        #0d0c0a 27%,
+        #050505 65%
+    );
+}
+
+.grid-lines{
+    background-image:
+        linear-gradient(#fff009 1px,transparent 1px),
+        linear-gradient(90deg,#fff009 1px,transparent 1px);
+
+    background-size:70px 70px;
+    opacity:.025;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+.product-card{
+    transform-style:preserve-3d;
+    will-change:transform;
+
+    transition:
+        box-shadow .35s,
+        border-color .35s,
+        transform .15s;
+}
+
+.product-card:hover{
+    box-shadow:0 25px 70px #000;
+    border-color:#ffffff25;
+}
+
+.product-img{
+    transition:
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.product-card:hover .product-img{
+    transform:scale(1.07);
+}
+
+.glass{
+    background:rgba(12,12,12,.7);
+    backdrop-filter:blur(18px);
+    border:1px solid #ffffff12;
+}
+
+.cursor-dot{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--gold);
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    mix-blend-mode:difference;
+}
+
+.cursor-ring{
+    position:fixed;
+    width:34px;
+    height:34px;
+    border:1px solid #ffffff80;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transform:translate(-50%,-50%);
+
+    transition:
+        width .2s,
+        height .2s;
+}
+
+.marquee{
+    animation:marquee 20s linear infinite;
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+.float{
+    animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+.noise:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.035;
+
+    background-image:url(
+        "data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"
+    );
+}
+
+@media(max-width:768px){
+
+    .cursor-dot,
+    .cursor-ring{
+        display:none;
+    }
+
+}
+
+</style>
 </head>
+
+
 <body>
 
-  <!-- Fundo Interativo 3D -->
-  <canvas id="bg-canvas"></canvas>
+<!-- CURSOR -->
+<div class="cursor-dot" id="dot"></div>
+<div class="cursor-ring" id="ring"></div>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <a href="#" class="logo-text">MOVAJÁ<span class="logo-shine"></span></a>
-    <nav class="nav-links">
-      <a href="#catalogo" class="nav-item">Catálogo</a>
-    </nav>
-  </header>
+<!-- PROGRESSO DA PÁGINA -->
+<div
+id="progress"
+class="fixed top-0 left-0 h-[2px] bg-gold z-[100] w-0">
+</div>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="hero-tag">Curadoria Oficial MOVAJÁ</span>
-      <h1 class="hero-title">O SEU ESTILO. <br><span class="gold-text">ELEVADO AO MÁXIMO.</span></h1>
-      <p class="hero-desc">Sapatos, vestuário, relógios, perfumes e acessórios selecionados das melhores lojas.</p>
-      <a href="#catalogo" class="cta-button">Ver Catálogo Completo →</a>
+
+<!-- ================= HEADER ================= -->
+
+<header
+class="fixed top-0 w-full z-50 transition-all duration-500"
+id="nav">
+
+<div class="max-w-7xl mx-auto px-5 md:px-8 h-[78px] flex items-center justify-between">
+
+<a
+href="#"
+class="font-bold tracking-[.28em] text-lg">
+
+MOVAJÁ<span class="gold">.</span>
+
+</a>
+
+
+<nav
+class="hidden md:flex gap-8 text-[11px] tracking-[.22em] font-semibold text-white/65">
+
+<a
+href="#colecao"
+class="hover:text-white transition">
+
+COLEÇÃO
+
+</a>
+
+<a
+href="#manifesto"
+class="hover:text-white transition">
+
+MANIFESTO
+
+</a>
+
+<a
+href="#explorar"
+class="hover:text-white transition">
+
+EXPLORAR
+
+</a>
+
+</nav>
+
+
+<button
+onclick="document.getElementById('search').focus()"
+class="glass rounded-full px-4 py-2 text-[10px] tracking-widest flex items-center gap-2 hover:bg-white/10 transition">
+
+⌕
+
+<span class="hidden sm:block">
+BUSCAR
+</span>
+
+</button>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section
+class="hero-bg noise relative min-h-screen flex items-center justify-center overflow-hidden">
+
+<div class="absolute inset-0 grid-lines"></div>
+
+
+<div
+class="absolute w-[500px] h-[500px] rounded-full border border-white/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+</div>
+
+
+<div
+class="absolute w-[700px] h-[700px] rounded-full border border-white/[.025] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+</div>
+
+
+<div class="relative z-10 text-center px-5 pt-20">
+
+<p
+class="gold uppercase tracking-[.42em] text-[10px] font-semibold mb-7 reveal">
+
+Curadoria independente · 2026
+
+</p>
+
+
+<h1
+class="reveal text-[clamp(4rem,11vw,10rem)] leading-[.78] tracking-[-.07em] font-semibold">
+
+VISTA
+
+<br>
+
+<span class="serif italic font-normal text-white/75">
+o seu
+</span>
+
+<br>
+
+momento<span class="gold">.</span>
+
+</h1>
+
+
+<p
+class="reveal max-w-lg mx-auto mt-9 text-white/45 text-sm leading-7">
+
+Moda não é seguir uma tendência.
+É encontrar peças que fazem sentido para quem você está se tornando.
+
+</p>
+
+
+<div
+class="reveal mt-10 flex justify-center gap-3 flex-wrap">
+
+<a
+href="#colecao"
+class="bg-white text-black px-7 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-gold transition">
+
+EXPLORAR CURADORIA
+
+</a>
+
+
+<a
+href="#manifesto"
+class="border border-white/15 px-7 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-white/10 transition">
+
+CONHECER A MOVAJÁ
+
+</a>
+
+</div>
+
+</div>
+
+
+<div
+class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-[9px] tracking-[.3em] text-white/30">
+
+ROLE PARA DESCOBRIR
+
+<br>
+
+<span class="text-xl">
+↓
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= MANIFESTO ================= -->
+
+<section
+id="manifesto"
+class="py-28 md:py-40 max-w-7xl mx-auto px-5 md:px-8 reveal">
+
+<div
+class="grid md:grid-cols-12 gap-10 items-end">
+
+<div class="md:col-span-7">
+
+<span class="gold text-[10px] tracking-[.3em]">
+01 — MANIFESTO
+</span>
+
+
+<h2
+class="mt-5 text-4xl md:text-6xl tracking-tight">
+
+Menos catálogo.
+
+<br>
+
+<span class="serif italic text-white/50">
+Mais identidade.
+</span>
+
+</h2>
+
+</div>
+
+
+<p
+class="md:col-span-5 text-white/45 leading-7 text-sm">
+
+A MOVAJÁ conecta você a peças selecionadas
+para diferentes momentos e estilos.
+
+Uma experiência simples por fora,
+inteligente por dentro —
+feita para descobrir, combinar e comprar.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= COLEÇÃO ================= -->
+
+<section
+id="colecao"
+class="max-w-7xl mx-auto px-5 md:px-8 pb-32">
+
+
+<div
+class="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-10 reveal">
+
+<div>
+
+<span class="gold text-[10px] tracking-[.3em]">
+02 — CURADORIA
+</span>
+
+
+<h2
+class="text-4xl md:text-5xl mt-3 tracking-tight">
+
+Escolha seu
+
+<span class="serif italic text-white/60">
+mood.
+</span>
+
+</h2>
+
+</div>
+
+
+<div class="relative w-full lg:w-80">
+
+<input
+id="search"
+oninput="render()"
+placeholder="Pesquisar produto..."
+class="w-full bg-white/[.04] border border-white/10 rounded-full px-5 py-3.5 text-sm outline-none focus:border-gold/50 transition">
+
+
+<span
+class="absolute right-5 top-3.5 text-white/30">
+
+⌕
+
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- FILTROS -->
+
+<div
+class="flex gap-2 overflow-x-auto pb-4 mb-8 reveal"
+id="filters">
+</div>
+
+
+
+<!-- PRODUTOS -->
+
+<div
+id="products"
+class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+</div>
+
+
+<p
+id="empty"
+class="hidden text-center py-20 text-white/40">
+
+Nada encontrado.
+Tente outro termo.
+
+</p>
+
+</section>
+
+
+
+<!-- ================= MARQUEE ================= -->
+
+<section
+id="explorar"
+class="py-24 border-y border-white/5 overflow-hidden">
+
+<div
+class="marquee whitespace-nowrap flex w-max gap-8 text-[10px] tracking-[.35em] text-white/25">
+
+<span>
+MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
+</span>
+
+<span class="gold">
+MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
+</span>
+
+<span>
+MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
+</span>
+
+<span class="gold">
+MOVAJÁ · ESTILO · ATITUDE · IDENTIDADE ·
+</span>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= SURPRESA ================= -->
+
+<section
+class="max-w-7xl mx-auto px-5 md:px-8 py-32 reveal">
+
+<div
+class="glass rounded-3xl p-8 md:p-16 relative overflow-hidden">
+
+<div
+class="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-gold/10 blur-3xl">
+</div>
+
+
+<span class="gold text-[10px] tracking-[.3em]">
+03 — DESCOBERTA
+</span>
+
+
+<h2
+class="mt-5 text-4xl md:text-6xl max-w-3xl tracking-tight">
+
+Não sabe o que procurar?
+
+<br>
+
+<span class="serif italic text-white/50">
+
+Deixe a MOVAJÁ te levar.
+
+</span>
+
+</h2>
+
+
+<div
+class="mt-10 flex flex-wrap gap-3">
+
+<button
+onclick="randomPick()"
+class="bg-white text-black px-6 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-gold transition">
+
+SURPREENDA-ME
+
+</button>
+
+
+<a
+href="#colecao"
+class="border border-white/15 px-6 py-4 text-[10px] tracking-[.2em] font-bold hover:bg-white/10 transition">
+
+VER TUDO
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer
+class="border-t border-white/5 py-14">
+
+<div
+class="max-w-7xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between gap-8">
+
+<div>
+
+<b class="tracking-[.25em]">
+
+MOVAJÁ<span class="gold">.</span>
+
+</b>
+
+
+<p class="text-white/30 text-xs mt-3">
+Vista o seu momento.
+</p>
+
+</div>
+
+
+<p
+class="text-white/25 text-xs max-w-md leading-6">
+
+A MOVAJÁ atua como vitrine digital de curadoria e afiliados.
+A compra é finalizada na plataforma parceira.
+
+</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+id="modal"
+class="fixed inset-0 z-[80] hidden items-center justify-center p-5 bg-black/80 backdrop-blur-xl">
+
+<div
+class="glass max-w-4xl w-full rounded-3xl overflow-hidden relative"
+id="modalbox">
+</div>
+
+</div>
+
+
+
+<script>
+
+/* ==========================================
+   PRODUTOS
+========================================== */
+
+const products=[
+
+{
+img:"assets/1000225819.jpg",
+alt:"Short",
+cat:"Roupas",
+name:"Short",
+url:"https://meli.la/131wUQ7"
+},
+
+{
+img:"assets/1000225816.jpg",
+alt:"Cinto",
+cat:"Acessórios",
+name:"Cinto",
+url:"https://meli.la/2GQc29P"
+},
+
+{
+img:"assets/1000225815.jpg",
+alt:"Camisa Polo",
+cat:"Roupas",
+name:"Camisa Polo",
+url:"https://meli.la/2QVNmiV"
+},
+
+{
+img:"assets/1000225814.jpg",
+alt:"Calça Alfaiataria",
+cat:"Old Money",
+name:"Calça Alfaiataria",
+url:"https://meli.la/1pbruPw"
+},
+
+{
+img:"assets/1000225813.jpg",
+alt:"Cuecas",
+cat:"Moda Íntima",
+name:"Cuecas",
+url:"https://meli.la/1WuZzrA"
+},
+
+{
+img:"assets/1000225812.jpg",
+alt:"Carteira",
+cat:"Acessórios",
+name:"Carteira",
+url:"https://meli.la/1NHEvFg"
+},
+
+{
+img:"assets/1000225811.jpg",
+alt:"Camiseta",
+cat:"Streetwear",
+name:"Camiseta",
+url:"https://meli.la/2LNiXpw"
+},
+
+{
+img:"assets/1000225810.jpg",
+alt:"Perfume",
+cat:"Perfumes",
+name:"Perfume",
+url:"https://meli.la/2RZq5c1"
+},
+
+{
+img:"assets/1000225809.jpg",
+alt:"Pulseira",
+cat:"Acessórios",
+name:"Pulseira",
+url:"https://meli.la/1SSYsUW"
+},
+
+{
+img:"assets/1000225808.jpg",
+alt:"Sandália Birken",
+cat:"Calçados",
+name:"Sandália Birken",
+url:"https://www.mercadolivre.com.br"
+},
+
+{
+img:"assets/1000225807.jpg",
+alt:"Suéter",
+cat:"Old Money",
+name:"Suéter",
+url:"https://meli.la/2zBfrCo"
+},
+
+{
+img:"assets/1000225806.jpg",
+alt:"Relógio Orient",
+cat:"Acessórios",
+name:"Relógio Orient",
+url:"https://meli.la/2jikb9T"
+},
+
+{
+img:"assets/1000225805.jpg",
+alt:"Óculos Ray-Ban",
+cat:"Acessórios",
+name:"Óculos Ray-Ban",
+url:"https://meli.la/2wRVUaq"
+},
+
+{
+img:"assets/1000225804.jpg",
+alt:"Boné",
+cat:"Streetwear",
+name:"Boné",
+url:"https://meli.la/1TM7n7o"
+}
+
+];
+
+
+let active="Todos";
+
+
+/* ==========================================
+   FILTROS
+========================================== */
+
+const cats=[
+    "Todos",
+    ...new Set(products.map(p=>p.cat))
+];
+
+const filters=document.getElementById("filters");
+
+
+cats.forEach(c=>{
+
+    let b=document.createElement("button");
+
+    b.textContent=c;
+
+    b.className=
+    "filter shrink-0 rounded-full border border-white/10 px-5 py-2.5 text-[10px] tracking-widest text-white/50 hover:text-white transition";
+
+    b.onclick=()=>{
+
+        active=c;
+
+        document
+        .querySelectorAll(".filter")
+        .forEach(x=>{
+            x.classList.remove(
+                "bg-white",
+                "text-black"
+            );
+        });
+
+        b.classList.add(
+            "bg-white",
+            "text-black"
+        );
+
+        render();
+
+    };
+
+    filters.appendChild(b);
+
+});
+
+
+filters.firstChild.classList.add(
+    "bg-white",
+    "text-black"
+);
+
+
+
+/* ==========================================
+   RENDER PRODUTOS
+========================================== */
+
+function render(){
+
+    const q=
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+
+    const list=
+    products.filter(p=>
+        (active==="Todos" || p.cat===active)
+        &&
+        (
+            !q
+            ||
+            p.name.toLowerCase().includes(q)
+            ||
+            p.cat.toLowerCase().includes(q)
+        )
+    );
+
+
+    const box=
+    document.getElementById("products");
+
+    box.innerHTML="";
+
+
+    document
+    .getElementById("empty")
+    .classList
+    .toggle(
+        "hidden",
+        list.length>0
+    );
+
+
+    list.forEach((p,i)=>{
+
+        const el=
+        document.createElement("article");
+
+
+        el.className=
+        "product-card reveal bg-[#0a0a0a] border border-white/[.07] rounded-2xl overflow-hidden";
+
+
+        el.innerHTML=`
+
+        <div
+        class="relative aspect-[4/5] bg-[#111] overflow-hidden">
+
+            <img
+            src="${p.img}"
+            onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=80'"
+            class="product-img w-full h-full object-cover"
+            alt="${p.alt}">
+
+
+            <span
+            class="absolute top-4 left-4 glass rounded-full px-3 py-1.5 text-[9px] tracking-widest gold">
+
+                ${p.cat}
+
+            </span>
+
+        </div>
+
+
+        <div class="p-5">
+
+            <div
+            class="flex items-start justify-between gap-3">
+
+                <h3 class="font-semibold">
+                    ${p.name}
+                </h3>
+
+
+                <span class="text-[9px] text-white/25">
+                    0${i+1}
+                </span>
+
+            </div>
+
+
+            <p
+            class="text-xs text-white/35 mt-2">
+
+                Selecionado pela MOVAJÁ
+
+            </p>
+
+
+            <div
+            class="mt-5 flex gap-2">
+
+                <button
+                class="details flex-1 border border-white/10 py-3 text-[9px] tracking-widest hover:bg-white/10 transition">
+
+                    DETALHES
+
+                </button>
+
+
+                <a
+                href="${p.url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 bg-white text-black py-3 text-center text-[9px] tracking-widest font-bold hover:bg-gold transition">
+
+                    COMPRAR ↗
+
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+
+        el
+        .querySelector(".details")
+        .onclick=()=>openModal(p);
+
+
+        el.onmousemove=e=>
+        tilt(e,el);
+
+
+        el.onmouseleave=()=>{
+            el.style.transform=
+            "perspective(900px) rotateX(0) rotateY(0)";
+        };
+
+
+        box.appendChild(el);
+
+
+        setTimeout(
+            ()=>el.classList.add("show"),
+            i*45
+        );
+
+    });
+
+}
+
+
+
+/* ==========================================
+   EFEITO 3D
+========================================== */
+
+function tilt(e,el){
+
+    const r=
+    el.getBoundingClientRect();
+
+
+    const x=
+    (e.clientX-r.left)
+    /
+    r.width
+    -.5;
+
+
+    const y=
+    (e.clientY-r.top)
+    /
+    r.height
+    -.5;
+
+
+    el.style.transform=
+    `
+    perspective(900px)
+    rotateX(${-y*5}deg)
+    rotateY(${x*5}deg)
+    translateY(-4px)
+    `;
+
+}
+
+
+
+/* ==========================================
+   MODAL DO PRODUTO
+========================================== */
+
+function openModal(p){
+
+    const rel=
+    products
+    .filter(x=>
+        x.cat===p.cat &&
+        x!==p
+    )
+    .slice(0,3);
+
+
+    document
+    .getElementById("modalbox")
+    .innerHTML=`
+
+    <button
+    onclick="closeModal()"
+    class="absolute top-5 right-5 z-10 w-10 h-10 rounded-full bg-black/60 text-white">
+
+        ×
+
+    </button>
+
+
+    <div class="grid md:grid-cols-2">
+
+
+        <img
+        src="${p.img}"
+        onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&q=80'"
+        class="w-full h-full min-h-[380px] object-cover"
+        alt="${p.alt}">
+
+
+        <div class="p-8 md:p-12">
+
+            <span
+            class="gold text-[9px] tracking-widest">
+
+                ${p.cat}
+
+            </span>
+
+
+            <h2 class="text-4xl mt-3">
+
+                ${p.name}
+
+            </h2>
+
+
+            <p
+            class="text-white/40 text-sm leading-7 mt-5">
+
+                Uma escolha da curadoria MOVAJÁ
+                para completar seu estilo.
+                Explore a peça na loja parceira
+                e confira preço, tamanhos
+                e disponibilidade.
+
+            </p>
+
+
+            <a
+            href="${p.url}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block mt-8 bg-white text-black text-center py-4 text-[10px] tracking-widest font-bold hover:bg-gold transition">
+
+                VER NA LOJA ↗
+
+            </a>
+
+
+            <div class="mt-10">
+
+                <p
+                class="text-[9px] tracking-widest text-white/30 mb-4">
+
+                    VOCÊ TAMBÉM PODE GOSTAR
+
+                </p>
+
+
+                <div class="flex gap-3">
+
+                    ${rel.map(x=>`
+
+                    <button
+                    onclick='openModal(${JSON.stringify(x)})'
+                    class="text-left flex-1">
+
+                        <img
+                        src="${x.img}"
+                        onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=400&q=70'"
+                        class="aspect-square object-cover rounded-xl"
+                        alt="${x.alt}">
+
+
+                        <span
+                        class="block text-xs mt-2">
+
+                            ${x.name}
+
+                        </span>
+
+                    </button>
+
+                    `).join("")}
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-  </section>
 
-  <!-- Seção do Catálogo -->
-  <main id="catalogo" class="catalog-section">
-    <div class="section-header">
-      <h2>Explorar por Categoria</h2>
-      <p>Selecione a secção para filtrar o nosso catálogo</p>
-    </div>
+    `;
 
-    <!-- Filtros de Categorias em Carrossel Horizontal -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-category="all">Todos os Produtos</button>
-      <button class="filter-btn" data-category="carteiras">Carteiras & Porta-Cartões</button>
-      <button class="filter-btn" data-category="sapatos">Sapatos & Tênis</button>
-      <button class="filter-btn" data-category="camisas">Camisas & Polos</button>
-      <button class="filter-btn" data-category="calcas">Calças</button>
-      <button class="filter-btn" data-category="shorts">Shorts & Bermudas</button>
-      <button class="filter-btn" data-category="relogios">Relógios</button>
-      <button class="filter-btn" data-category="oculos">Óculos de Sol</button>
-      <button class="filter-btn" data-category="pulseiras">Pulseiras & Acessórios</button>
-      <button class="filter-btn" data-category="bones">Bonés & Chapéus</button>
-      <button class="filter-btn" data-category="perfumes">Perfumes & Fragrâncias</button>
-    </div>
 
-    <!-- Grid de Produtos -->
-    <div class="product-grid" id="product-grid"></div>
-  </main>
+    document
+    .getElementById("modal")
+    .classList
+    .remove("hidden");
 
-  <footer class="footer">
-    <p>&copy; 2026 MOVAJÁ. Todos os direitos reservados. Redirecionamos para vendedores oficiais verficados.</p>
-  </footer>
 
-  <script src="./script.js"></script>
+    document
+    .getElementById("modal")
+    .classList
+    .add("flex");
+
+}
+
+
+
+/* ==========================================
+   FECHAR MODAL
+========================================== */
+
+function closeModal(){
+
+    document
+    .getElementById("modal")
+    .classList
+    .add("hidden");
+
+
+    document
+    .getElementById("modal")
+    .classList
+    .remove("flex");
+
+}
+
+
+document
+.getElementById("modal")
+.onclick=e=>{
+
+    if(e.target.id==="modal"){
+        closeModal();
+    }
+
+};
+
+
+
+/* ==========================================
+   SURPREENDA-ME
+========================================== */
+
+function randomPick(){
+
+    const p=
+    products[
+        Math.floor(
+            Math.random()*products.length
+        )
+    ];
+
+    openModal(p);
+
+}
+
+
+
+/* ==========================================
+   ANIMAÇÃO AO ROLAR
+========================================== */
+
+const io=
+new IntersectionObserver(
+    es=>{
+
+        es.forEach(e=>{
+
+            if(e.isIntersecting){
+
+                e.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold:.12
+    }
+);
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(e=>io.observe(e));
+
+
+
+/* ==========================================
+   BARRA DE PROGRESSO
+========================================== */
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        const progress=
+        scrollY
+        /
+        (
+            document.documentElement.scrollHeight
+            -
+            innerHeight
+        )
+        *
+        100;
+
+
+        document
+        .getElementById("progress")
+        .style.width=
+        progress+"%";
+
+
+        document
+        .getElementById("nav")
+        .classList
+        .toggle(
+            "bg-black/75",
+            scrollY>30
+        );
+
+    }
+);
+
+
+
+/* ==========================================
+   CURSOR
+========================================== */
+
+const dot=
+document.getElementById("dot");
+
+const ring=
+document.getElementById("ring");
+
+
+window.addEventListener(
+    "mousemove",
+    e=>{
+
+        dot.style.left=
+        e.clientX+"px";
+
+        dot.style.top=
+        e.clientY+"px";
+
+
+        ring.style.left=
+        e.clientX+"px";
+
+        ring.style.top=
+        e.clientY+"px";
+
+    }
+);
+
+
+
+/* ==========================================
+   INICIALIZAÇÃO
+========================================== */
+
+render();
+
+</script>
+
 </body>
-</html>
+  </html>
